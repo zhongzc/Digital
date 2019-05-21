@@ -17,8 +17,6 @@ import de.neemann.digital.hdl.model2.HDLModel;
 import de.neemann.digital.hdl.model2.HDLNet;
 import de.neemann.digital.hdl.model2.clock.HDLClockIntegrator;
 import de.neemann.digital.hdl.printer.CodePrinter;
-import de.neemann.digital.hdl.boards.BoardInterface;
-import de.neemann.digital.hdl.boards.BoardProvider;
 import de.neemann.digital.lang.Lang;
 
 import java.io.Closeable;
@@ -66,11 +64,6 @@ public class VHDLGenerator implements Closeable {
             if (!circuit.getAttributes().get(Keys.ROMMANAGER).isEmpty())
                 throw new HDLException(Lang.get("err_centralDefinedRomsAreNotSupported"));
 
-            BoardInterface board = BoardProvider.getInstance().getBoard(circuit);
-
-            if (board != null && useClockIntegration)
-                clockIntegrator = board.getClockIntegrator();
-
             model = new HDLModel(library).create(circuit, clockIntegrator);
             for (HDLCircuit hdlCircuit : model)
                 hdlCircuit.applyDefaultOptimizations();
@@ -90,9 +83,6 @@ public class VHDLGenerator implements Closeable {
                 testBenches = new VHDLTestBenchCreator(circuit, model)
                         .write(outFile)
                         .getTestFileWritten();
-
-                if (board != null)
-                    board.writeFiles(outFile, model);
             }
 
             return this;
