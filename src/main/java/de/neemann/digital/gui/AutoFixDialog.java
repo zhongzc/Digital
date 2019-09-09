@@ -69,7 +69,10 @@ public final class AutoFixDialog {
 
         JPanel p = new JPanel(new GridLayout(0, 1));
         for (ValidFix f : validFixes) {
-            p.add(new JButton(new FixAction(main, dialog, f)));
+            JButton button = new JButton(new FixAction(main, dialog, f));
+            JPanel bp = new JPanel();
+            bp.add(button);
+            p.add(bp);
         }
 
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT));

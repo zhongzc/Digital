@@ -63,8 +63,6 @@ public class DataBus {
                 if (bits != b)
                     throw new PinException(Lang.get("err_notAllOutputsSameBits"), net);
             }
-//            if (!o.supportsHighZ())
-//                throw new PinException(Lang.get("err_notAllOutputsSupportHighZ"), net);
 
             switch (o.getPullResistor()) {
                 case pullDown:
