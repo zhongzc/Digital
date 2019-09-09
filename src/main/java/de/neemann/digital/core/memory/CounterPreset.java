@@ -6,10 +6,7 @@
 package de.neemann.digital.core.memory;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 
 import static de.neemann.digital.core.ObservableValues.ovs;
 import static de.neemann.digital.core.element.PinInfo.input;
@@ -42,7 +39,7 @@ public class CounterPreset extends Node implements Element {
     private final long maxValue;
     private final boolean probe;
     private final String label;
-    private final int bits;
+    private final ValueSource bits;
     private ObservableValue clockIn;
     private ObservableValue clrIn;
     private ObservableValue enable;
@@ -60,13 +57,13 @@ public class CounterPreset extends Node implements Element {
      */
     public CounterPreset(ElementAttributes attributes) {
         super(true);
-        bits = attributes.getBits();
+        bits = attributes.getBitSource();
         this.out = new ObservableValue("out", bits).setPinDescription(DESCRIPTION);
         this.ovf = new ObservableValue("ovf", 1).setPinDescription(DESCRIPTION);
 
         long m = attributes.get(Keys.MAX_VALUE);
         if (m == 0)
-            m = (1L << bits) - 1;
+            m = (1L << bits.get()) - 1;
         maxValue = m;
 
         probe = attributes.get(Keys.VALUE_IS_PROBE);

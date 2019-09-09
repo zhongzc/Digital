@@ -37,7 +37,7 @@ public class Const implements Element {
      * @param attributes the attributes
      */
     public Const(ElementAttributes attributes) {
-        output = new ObservableValue("out", attributes.getBits()).setPinDescription(DESCRIPTION);
+        output = new ObservableValue("out", attributes.getBitSource()).setPinDescription(DESCRIPTION);
         output.setValue(attributes.get(Keys.VALUE));
         output.setConstant();
     }

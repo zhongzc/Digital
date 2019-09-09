@@ -29,7 +29,7 @@ public abstract class FanIn extends Node implements Element, Countable {
 
     private final ArrayList<ObservableValue> inputs;
     private final ObservableValue output;
-    private final int bits;
+    private final ValueSource bits;
 
     /**
      * Creates a new instance
@@ -37,7 +37,7 @@ public abstract class FanIn extends Node implements Element, Countable {
      * @param attributes used to get the number of bits
      */
     public FanIn(ElementAttributes attributes) {
-        this.bits = attributes.getBits();
+        this.bits = attributes.getBitSource();
         inputs = new ArrayList<>();
         output = new ObservableValue("out", bits).setDescription(Lang.get("elem_Basic_Out"));
     }
@@ -69,7 +69,7 @@ public abstract class FanIn extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
     @Override

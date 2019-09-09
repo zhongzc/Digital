@@ -6,10 +6,7 @@
 package de.neemann.digital.core.arithmetic;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 
 import static de.neemann.digital.core.element.PinInfo.input;
@@ -36,6 +33,7 @@ public class BarrelShifter extends Node implements Element, Countable {
     private final BarrelShifterMode mode;
     private final boolean signed;
     private final LeftRightFormat direction;
+    private final ValueSource bitSource;
 
     private ObservableValue in;
     private ObservableValue shift;
@@ -49,7 +47,8 @@ public class BarrelShifter extends Node implements Element, Countable {
     public BarrelShifter(ElementAttributes attributes) {
         direction = attributes.get(Keys.DIRECTION);
         mode = attributes.get(Keys.BARREL_SHIFTER_MODE);
-        bits = attributes.getBits();
+        bitSource = attributes.getBitSource();
+        bits = bitSource.get();
         signed = attributes.get(Keys.BARREL_SIGNED);
 
         int sBits = Bits.binLn2(bits);
@@ -107,7 +106,7 @@ public class BarrelShifter extends Node implements Element, Countable {
 
     @Override
     public void setInputs(ObservableValues inputs) throws NodeException {
-        in = inputs.get(0).addObserverToValue(this).checkBits(bits, this, 0);
+        in = inputs.get(0).addObserverToValue(this).checkBits(bitSource, this, 0);
         shift = inputs.get(1).addObserverToValue(this).checkBits(shiftBits, this, 1);
     }
 

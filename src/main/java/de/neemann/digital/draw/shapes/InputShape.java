@@ -6,10 +6,7 @@
 package de.neemann.digital.draw.shapes;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.Keys;
-import de.neemann.digital.core.element.PinDescriptions;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.io.In;
 import de.neemann.digital.draw.elements.IOState;
 import de.neemann.digital.draw.elements.Pin;
@@ -39,7 +36,7 @@ public class InputShape implements Shape {
     private final boolean avoidLow;
     private final long min;
     private final long max;
-    private final int bits;
+    private final ValueSource bits;
     private IOState ioState;
     private SingleValueDialog dialog;
     private Value value;
@@ -66,13 +63,13 @@ public class InputShape implements Shape {
 
         avoidLow = isHighZ && attr.get(Keys.AVOID_ACTIVE_LOW);
 
-        bits = attr.getBits();
+        bits = attr.getBitSource();
         if (format.isSigned()) {
-            max = Bits.mask(bits) >> 1;
+            max = Bits.mask(bits.get()) >> 1;
             min = -max - 1;
         } else {
             min = 0;
-            max = Bits.mask(bits);
+            max = Bits.mask(bits.get());
         }
     }
 
@@ -147,7 +144,7 @@ public class InputShape implements Shape {
         @Override
         public boolean clicked(CircuitComponent cc, Point pos, IOState ioState, Element element, SyncAccess modelSync) {
             ObservableValue value = ioState.getOutput(0);
-            if (bits == 1) {
+            if (bits.get() == 1) {
                 modelSync.access(() -> {
                     if (isHighZ) {
                         if (value.isHighZ()) {
@@ -182,7 +179,7 @@ public class InputShape implements Shape {
         @Override
         public boolean dragged(CircuitComponent cc, Point posOnScreen, Vector pos, Transform transform, IOState ioState, Element element, SyncAccess modelSync) {
             ObservableValue value = ioState.getOutput(0);
-            if (bits > 1 && !value.isHighZ()) {
+            if (bits.get() > 1 && !value.isHighZ()) {
                 if (!isDrag) {
                     isDrag = true;
                     startPos = posOnScreen;

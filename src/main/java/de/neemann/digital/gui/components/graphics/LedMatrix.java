@@ -6,10 +6,7 @@
 package de.neemann.digital.gui.components.graphics;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.draw.elements.PinException;
 
 import javax.swing.*;
@@ -36,8 +33,8 @@ public class LedMatrix extends Node implements Element {
             .addAttribute(Keys.COLOR)
             .addAttribute(Keys.LED_PERSISTENCE);
 
-    private final int rowDataBits;
-    private final int colAddrBits;
+    private final ValueSource rowDataBits;
+    private final ValueSource colAddrBits;
     private final int dx;
     private final int dy;
     private final long[] data;
@@ -54,13 +51,13 @@ public class LedMatrix extends Node implements Element {
      * @param attr the attributes of the element
      */
     public LedMatrix(ElementAttributes attr) {
-        rowDataBits = attr.get(Keys.ROW_DATA_BITS);
-        colAddrBits = attr.get(Keys.COL_ADDR_BITS);
+        rowDataBits = attr.getSource(Keys.ROW_DATA_BITS);
+        colAddrBits = attr.getSource(Keys.COL_ADDR_BITS);
         label = attr.getLabel();
         color = attr.get(Keys.COLOR);
         ledPersist = attr.get(Keys.LED_PERSISTENCE);
-        dx = 1 << colAddrBits;
-        dy = rowDataBits;
+        dx = 1 << colAddrBits.get();
+        dy = rowDataBits.get();
         data = new long[dx];
     }
 

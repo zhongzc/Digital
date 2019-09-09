@@ -9,10 +9,7 @@ import de.neemann.digital.core.Node;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 
 import static de.neemann.digital.core.element.PinInfo.input;
@@ -33,7 +30,7 @@ public class Driver extends Node implements Element, Countable {
             .addAttribute(Keys.FLIP_SEL_POSITON);
 
     private final ObservableValue output;
-    private final int bits;
+    private final ValueSource bits;
     private ObservableValue input;
     private ObservableValue selIn;
     private long value;
@@ -45,7 +42,7 @@ public class Driver extends Node implements Element, Countable {
      * @param attributes the attributes
      */
     public Driver(ElementAttributes attributes) {
-        bits = attributes.getBits();
+        bits = attributes.getBitSource();
         output = new ObservableValue("out", bits)
                 .setToHighZ()
                 .setPinDescription(DESCRIPTION);
@@ -88,6 +85,6 @@ public class Driver extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 }

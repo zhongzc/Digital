@@ -7,6 +7,7 @@ package de.neemann.digital.core;
 
 import de.neemann.digital.core.element.ElementTypeDescription;
 import de.neemann.digital.core.element.PinDescription;
+import de.neemann.digital.core.element.ValueSource;
 import de.neemann.digital.lang.Lang;
 
 /**
@@ -36,13 +37,22 @@ public class ObservableValue extends Observable implements PinDescription {
      * @param name the name of this value
      * @param bits the number of bits
      */
+    public ObservableValue(String name, ValueSource bits) {
+        this(name, bits.get());
+    }
+
+    /**
+     * Creates a new instance.
+     *
+     * @param name the name of this value
+     * @param bits the number of bits
+     */
     public ObservableValue(String name, int bits) {
         this.name = name;
         this.bits = bits;
         mask = Bits.mask(bits);
         signedFlag = Bits.signedFlagMask(bits);
     }
-
 
     /**
      * Makes this value a constant value
@@ -230,6 +240,19 @@ public class ObservableValue extends Observable implements PinDescription {
      * checks if the given number of bits is the same used by this value.
      * It is a convenience method to make this check simpler to code.
      *
+     * @param bits the number of bits
+     * @param node the node to add to the exception if one is thrown
+     * @return this for chained calls
+     * @throws BitsException thrown if bit numbers do not match
+     */
+    public ObservableValue checkBits(ValueSource bits, Node node) throws BitsException {
+        return checkBits(bits, node, -1);
+    }
+
+    /**
+     * checks if the given number of bits is the same used by this value.
+     * It is a convenience method to make this check simpler to code.
+     *
      * @param bits  the number of bits
      * @param node  the node to add to the exception if one is thrown
      * @param input the affected nodes input
@@ -237,6 +260,24 @@ public class ObservableValue extends Observable implements PinDescription {
      * @throws BitsException thrown if bit numbers do not match
      */
     public ObservableValue checkBits(int bits, Node node, int input) throws BitsException {
+        return checkBits(bits, null, node, input);
+    }
+
+    /**
+     * checks if the given number of bits is the same used by this value.
+     * It is a convenience method to make this check simpler to code.
+     *
+     * @param bits  the number of bits
+     * @param node  the node to add to the exception if one is thrown
+     * @param input the affected nodes input
+     * @return this for chained calls
+     * @throws BitsException thrown if bit numbers do not match
+     */
+    public ObservableValue checkBits(ValueSource bits, Node node, int input) throws BitsException {
+        return checkBits(bits.get(), bits, node, input);
+    }
+
+    private ObservableValue checkBits(int bits, ValueSource bitSource, Node node, int input) throws BitsException {
         if (this.bits != bits) {
             throw new BitsException(Lang.get("err_needs_N0_bits_found_N2_bits", bits, this.bits), node, input, this);
         }

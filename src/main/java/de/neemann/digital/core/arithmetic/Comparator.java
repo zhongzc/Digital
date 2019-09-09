@@ -6,10 +6,7 @@
 package de.neemann.digital.core.arithmetic;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 
 import static de.neemann.digital.core.ObservableValues.ovs;
@@ -33,7 +30,7 @@ public class Comparator extends Node implements Element, Countable {
                     .addAttribute(Keys.SIGNED)
                     .setShortName("");
 
-    private final int bits;
+    private final ValueSource bits;
     private final Boolean signed;
     private final ObservableValue aklb;
     private final ObservableValue equals;
@@ -50,7 +47,7 @@ public class Comparator extends Node implements Element, Countable {
      */
     public Comparator(ElementAttributes attributes) {
         signed = attributes.get(Keys.SIGNED);
-        bits = attributes.getBits();
+        bits = attributes.getBitSource();
 
         this.agrb = new ObservableValue(">", 1).setPinDescription(DESCRIPTION);
         this.equals = new ObservableValue("=", 1).setPinDescription(DESCRIPTION);
@@ -78,7 +75,7 @@ public class Comparator extends Node implements Element, Countable {
             equals.setValue(0);
 
             boolean kl;
-            if (bits < 64 || signed)
+            if (bits.get() < 64 || signed)
                 kl = valueA < valueB;
             else {
                 int a = (valueA & MSB) == 0 ? 0 : 1;
@@ -107,6 +104,6 @@ public class Comparator extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 }

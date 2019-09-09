@@ -9,10 +9,7 @@ import de.neemann.digital.core.Node;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.memory.DataField;
 import de.neemann.digital.core.memory.RAMInterface;
 
@@ -53,7 +50,7 @@ public class GraphicCard extends Node implements Element, RAMInterface {
     private GraphicDialog graphicDialog;
     private final int size;
     private final String label;
-    private final int bits;
+    private final ValueSource bits;
     private final int addrBits;
     private ObservableValue dataOut;
     private ObservableValue addrIn;
@@ -77,7 +74,7 @@ public class GraphicCard extends Node implements Element, RAMInterface {
         width = attr.get(Keys.GRAPHIC_WIDTH);
         height = attr.get(Keys.GRAPHIC_HEIGHT);
         bankSize = width * height;
-        bits = attr.getBits();
+        bits = attr.getBitSource();
         size = bankSize * 2;
 
         int aBits = 1;
@@ -180,7 +177,7 @@ public class GraphicCard extends Node implements Element, RAMInterface {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
     @Override

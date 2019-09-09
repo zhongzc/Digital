@@ -6,10 +6,7 @@
 package de.neemann.digital.core.arithmetic;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.lang.Lang;
 
 import static de.neemann.digital.core.element.PinInfo.input;
@@ -31,8 +28,8 @@ public class BitExtender implements Element {
             .addAttribute(Keys.OUTPUT_BITS);
 
     private final ObservableValue out;
-    private final int outBits;
-    private final int inBits;
+    private final ValueSource outBits;
+    private final ValueSource inBits;
 
     /**
      * creates a new instance
@@ -40,19 +37,19 @@ public class BitExtender implements Element {
      * @param attr the components attributes
      */
     public BitExtender(ElementAttributes attr) {
-        outBits = attr.get(Keys.OUTPUT_BITS);
+        outBits = attr.getSource(Keys.OUTPUT_BITS);
         out = new ObservableValue("out", outBits).setPinDescription(DESCRIPTION);
-        inBits = attr.get(Keys.INPUT_BITS);
+        inBits = attr.getSource(Keys.INPUT_BITS);
     }
 
     @Override
     public void setInputs(ObservableValues inputs) throws NodeException {
         final ObservableValue in = inputs.get(0).checkBits(inBits, null);
-        if (inBits >= outBits)
+        if (inBits.get() >= outBits.get())
             throw new NodeException(Lang.get("err_notMoreOutBitsThanInBits"));
 
-        final long signMask = Bits.signedFlagMask(inBits);
-        final long extendMask = ~Bits.mask(inBits);
+        final long signMask = Bits.signedFlagMask(inBits.get());
+        final long extendMask = ~Bits.mask(inBits.get());
 
         in.addObserver(new NodeWithoutDelay(out) {
             @Override

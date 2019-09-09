@@ -6,10 +6,7 @@
 package de.neemann.digital.core.arithmetic;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 import de.neemann.digital.lang.Lang;
 
@@ -31,7 +28,7 @@ public class Mul extends Node implements Element, Countable {
             .addAttribute(Keys.BITS);
 
     private final ObservableValue mul;
-    private final int bits;
+    private final ValueSource bits;
     private final boolean signed;
     private ObservableValue a;
     private ObservableValue b;
@@ -44,8 +41,8 @@ public class Mul extends Node implements Element, Countable {
      */
     public Mul(ElementAttributes attributes) {
         signed = attributes.get(Keys.SIGNED);
-        bits = attributes.getBits();
-        int outBits = this.bits * 2;
+        bits = attributes.getBitSource();
+        int outBits = this.bits.get() * 2;
         if (outBits > 64)  // used to avoid strange error conditions. The init method throws the exception
             outBits = 64;
         this.mul = new ObservableValue("mul", outBits).setPinDescription(DESCRIPTION);
@@ -66,7 +63,7 @@ public class Mul extends Node implements Element, Countable {
 
     @Override
     public void init(Model model) throws NodeException {
-        if (bits > 32)
+        if (bits.get() > 32)
             throw new BitsException(Lang.get("err_toManyBits_Found_N0_maxIs_N1", bits, 32), this);
     }
 
@@ -83,6 +80,6 @@ public class Mul extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 }

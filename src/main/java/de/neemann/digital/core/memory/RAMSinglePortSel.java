@@ -9,10 +9,7 @@ import de.neemann.digital.core.Node;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 
 import static de.neemann.digital.core.element.PinInfo.input;
 
@@ -37,8 +34,8 @@ public class RAMSinglePortSel extends Node implements Element, RAMInterface {
             .addAttribute(Keys.IS_PROGRAM_MEMORY)
             .addAttribute(Keys.INVERTER_CONFIG);
 
-    private final int bits;
-    private final int addrBits;
+    private final ValueSource bits;
+    private final ValueSource addrBits;
     private final int size;
     private final String label;
     private final ObservableValue dataOut;
@@ -62,9 +59,9 @@ public class RAMSinglePortSel extends Node implements Element, RAMInterface {
      */
     public RAMSinglePortSel(ElementAttributes attr) {
         super(true);
-        bits = attr.getBits();
-        addrBits = attr.get(Keys.ADDR_BITS);
-        size = 1 << addrBits;
+        bits = attr.getBitSource();
+        addrBits = attr.getSource(Keys.ADDR_BITS);
+        size = 1 << addrBits.get();
         memory = new DataField(size);
         label = attr.getLabel();
         dataOut = new ObservableValue("D", bits)
@@ -128,12 +125,12 @@ public class RAMSinglePortSel extends Node implements Element, RAMInterface {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
     @Override
     public int getAddrBits() {
-        return addrBits;
+        return addrBits.get();
     }
 
     /**

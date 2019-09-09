@@ -86,6 +86,7 @@ public class Out implements Element {
     private final String pinNumber;
     private final IntFormat format;
     private final boolean showInGraph;
+    private final ValueSource bitSource;
     private boolean enforceSignal = false;
     private ObservableValue value;
 
@@ -95,7 +96,8 @@ public class Out implements Element {
      * @param attributes the attributes
      */
     public Out(ElementAttributes attributes) {
-        bits = new int[]{attributes.getBits()};
+        bitSource = attributes.getBitSource();
+        this.bits = new int[]{bitSource.get()};
         label = attributes.getLabel();
         pinNumber = attributes.get(Keys.PINNUMBER);
         format = attributes.get(Keys.INT_FORMAT);
@@ -113,13 +115,17 @@ public class Out implements Element {
         pinNumber = "";
         format = null;
         showInGraph = true;
+        bitSource = null;
     }
 
     @Override
     public void setInputs(ObservableValues inputs) throws NodeException {
         if (inputs.size() != bits.length)
             throw new NodeException("wrong input count");
-        value = inputs.get(0).checkBits(bits[0], null);
+        if (bitSource != null)
+            value = inputs.get(0).checkBits(bitSource, null);
+        else
+            value = inputs.get(0).checkBits(bits[0], null);
         for (int i = 1; i < bits.length; i++)
             inputs.get(i).checkBits(bits[i], null);
     }

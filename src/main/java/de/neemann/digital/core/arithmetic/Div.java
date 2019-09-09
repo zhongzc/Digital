@@ -9,10 +9,7 @@ import de.neemann.digital.core.Node;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 
 import static de.neemann.digital.core.element.PinInfo.input;
@@ -34,7 +31,7 @@ public class Div extends Node implements Element, Countable {
 
     private final ObservableValue quotient;
     private final ObservableValue remainder;
-    private final int bits;
+    private final ValueSource bits;
     private final boolean signed;
     private ObservableValue a;
     private ObservableValue b;
@@ -48,7 +45,7 @@ public class Div extends Node implements Element, Countable {
      */
     public Div(ElementAttributes attributes) {
         signed = attributes.get(Keys.SIGNED);
-        bits = attributes.getBits();
+        bits = attributes.getBitSource();
         this.quotient = new ObservableValue("q", bits).setPinDescription(DESCRIPTION);
         this.remainder = new ObservableValue("r", bits).setPinDescription(DESCRIPTION);
     }
@@ -103,6 +100,6 @@ public class Div extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 }

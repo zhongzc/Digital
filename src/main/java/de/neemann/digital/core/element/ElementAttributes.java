@@ -146,6 +146,26 @@ public class ElementAttributes implements HGSMap {
      *
      * @return the number of bits
      */
+    public ValueSource getBitSource() {
+        return new ValueSource(this, Keys.BITS);
+    }
+
+    /**
+     * Returns the value stored in this attributes.
+     *
+     * @param key the key
+     * @return the value stored in tis attributes map
+     */
+    public ValueSource getSource(Key<Integer> key) {
+        return new ValueSource(this, key);
+    }
+
+    /**
+     * Returns the bits count stored in this attributes.
+     * Its a short hand for get(AttributeKey.BITS)
+     *
+     * @return the number of bits
+     */
     public int getBits() {
         return get(Keys.BITS);
     }

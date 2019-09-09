@@ -6,10 +6,7 @@
 package de.neemann.digital.core.flipflops;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 
 import static de.neemann.digital.core.ObservableValues.ovs;
@@ -32,7 +29,7 @@ public class FlipflopD extends Node implements Element, Countable {
             .addAttribute(Keys.INVERTER_CONFIG)
             .addAttribute(Keys.VALUE_IS_PROBE);
 
-    private final int bits;
+    private final ValueSource bits;
     private final boolean isProbe;
     private final String label;
     private ObservableValue dVal;
@@ -50,8 +47,8 @@ public class FlipflopD extends Node implements Element, Countable {
      */
     public FlipflopD(ElementAttributes attributes) {
         this(attributes,
-                new ObservableValue("Q", attributes.getBits()).setPinDescription(DESCRIPTION),
-                new ObservableValue("~Q", attributes.getBits()).setPinDescription(DESCRIPTION));
+                new ObservableValue("Q", attributes.getBitSource()).setPinDescription(DESCRIPTION),
+                new ObservableValue("~Q", attributes.getBitSource()).setPinDescription(DESCRIPTION));
     }
 
     /**
@@ -73,7 +70,7 @@ public class FlipflopD extends Node implements Element, Countable {
 
     FlipflopD(ElementAttributes attributes, ObservableValue q, ObservableValue qn) {
         super(true);
-        bits = attributes.getBits();
+        bits = attributes.getBitSource();
         this.q = q;
         this.qn = qn;
         isProbe = attributes.get(Keys.VALUE_IS_PROBE);
@@ -144,7 +141,7 @@ public class FlipflopD extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
     void setValue(long value) {

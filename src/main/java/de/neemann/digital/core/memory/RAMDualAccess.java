@@ -6,10 +6,7 @@
 package de.neemann.digital.core.memory;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 
 import static de.neemann.digital.core.element.PinInfo.input;
 
@@ -38,8 +35,8 @@ public class RAMDualAccess extends Node implements Element, RAMInterface {
     private final DataField memory;
     private final ObservableValue out1;
     private final ObservableValue out2;
-    private final int addrBits;
-    private final int bits;
+    private final ValueSource addrBits;
+    private final ValueSource bits;
     private final String label;
     private final int size;
     private final boolean isProgramMemory;
@@ -61,14 +58,14 @@ public class RAMDualAccess extends Node implements Element, RAMInterface {
      */
     public RAMDualAccess(ElementAttributes attr) {
         super(true);
-        bits = attr.getBits();
+        bits = attr.getBitSource();
         out1 = new ObservableValue("1D", bits)
                 .setToHighZ()
                 .setPinDescription(DESCRIPTION);
         out2 = new ObservableValue("2D", bits)
                 .setPinDescription(DESCRIPTION);
-        addrBits = attr.get(Keys.ADDR_BITS);
-        size = 1 << addrBits;
+        addrBits = attr.getSource(Keys.ADDR_BITS);
+        size = 1 << addrBits.get();
         memory = new DataField(size);
         label = attr.getLabel();
         isProgramMemory = attr.get(Keys.IS_PROGRAM_MEMORY);
@@ -139,12 +136,12 @@ public class RAMDualAccess extends Node implements Element, RAMInterface {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
     @Override
     public int getAddrBits() {
-        return addrBits;
+        return addrBits.get();
     }
 
     @Override

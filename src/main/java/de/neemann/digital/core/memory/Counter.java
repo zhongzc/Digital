@@ -46,10 +46,10 @@ public class Counter extends Node implements Element {
      */
     public Counter(ElementAttributes attributes) {
         super(true);
-        int bits = attributes.getBits();
+        ValueSource bits = attributes.getBitSource();
         this.out = new ObservableValue("out", bits).setPinDescription(DESCRIPTION);
         this.ovf = new ObservableValue("ovf", 1).setPinDescription(DESCRIPTION);
-        maxValue = (1L << bits) - 1;
+        maxValue = (1L << bits.get()) - 1;
         probe = attributes.get(Keys.VALUE_IS_PROBE);
         label = attributes.getLabel();
     }

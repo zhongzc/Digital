@@ -32,7 +32,7 @@ public class PullUp implements Element {
      * @param attr the attributes
      */
     public PullUp(ElementAttributes attr) {
-        int bits = attr.getBits();
+        ValueSource bits = attr.getBitSource();
         output = new PullDown.PullObservableValue(bits, PinDescription.PullResistor.pullUp).setPinDescription(DESCRIPTION);
     }
 

@@ -57,7 +57,7 @@ public class In implements Element {
     public In(ElementAttributes attributes) {
         InValue value = attributes.get(Keys.INPUT_DEFAULT);
         pinNumber = attributes.get(Keys.PINNUMBER);
-        output = new ObservableValue("out", attributes.getBits())
+        output = new ObservableValue("out", attributes.getBitSource())
                 .setPinDescription(DESCRIPTION)
                 .setPinNumber(pinNumber);
         boolean highZ = attributes.get(Keys.IS_HIGH_Z) || value.isHighZ();

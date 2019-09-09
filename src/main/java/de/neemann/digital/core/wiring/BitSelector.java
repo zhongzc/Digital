@@ -9,10 +9,7 @@ import de.neemann.digital.core.Node;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 
 import static de.neemann.digital.core.element.PinInfo.input;
 
@@ -32,7 +29,7 @@ public class BitSelector extends Node implements Element {
             .addAttribute(Keys.FLIP_SEL_POSITON);
 
     private final ObservableValue output;
-    private final int selBits;
+    private final ValueSource selBits;
     private final int dataBits;
     private ObservableValue input;
     private ObservableValue selIn;
@@ -45,8 +42,8 @@ public class BitSelector extends Node implements Element {
      * @param attributes the attributes
      */
     public BitSelector(ElementAttributes attributes) {
-        selBits = attributes.get(Keys.SELECTOR_BITS);
-        dataBits = 1 << selBits;
+        selBits = attributes.getSource(Keys.SELECTOR_BITS);
+        dataBits = 1 << selBits.get();
         output = new ObservableValue("out", 1).setPinDescription(DESCRIPTION);
     }
 

@@ -9,10 +9,7 @@ import de.neemann.digital.core.Node;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 import de.neemann.digital.lang.Lang;
 
@@ -26,8 +23,8 @@ import static de.neemann.digital.core.element.PinInfo.input;
  */
 public class Demultiplexer extends Node implements Element, Countable {
 
-    private final int selectorBits;
-    private final Integer bits;
+    private final ValueSource selectorBits;
+    private final ValueSource bits;
     private final long defaultValue;
     private final ObservableValues output;
     private ObservableValue selector;
@@ -54,10 +51,10 @@ public class Demultiplexer extends Node implements Element, Countable {
      * @param attributes the attributes
      */
     public Demultiplexer(ElementAttributes attributes) {
-        bits = attributes.getBits();
-        this.selectorBits = attributes.get(Keys.SELECTOR_BITS);
+        bits = attributes.getBitSource();
+        this.selectorBits = attributes.getSource(Keys.SELECTOR_BITS);
         this.defaultValue = attributes.get(Keys.DEFAULT);
-        int outputs = 1 << selectorBits;
+        int outputs = 1 << selectorBits.get();
         ArrayList<ObservableValue> o = new ArrayList<>(outputs);
         for (int i = 0; i < outputs; i++)
             o.add(new ObservableValue("out_" + i, bits).setValue(defaultValue).setDescription(Lang.get("elem_Demultiplexer_output", i)));
@@ -90,11 +87,11 @@ public class Demultiplexer extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
     @Override
     public int getAddrBits() {
-        return selectorBits;
+        return selectorBits.get();
     }
 }

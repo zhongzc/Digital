@@ -9,10 +9,7 @@ import de.neemann.digital.core.Node;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 
 import static de.neemann.digital.core.element.PinInfo.input;
 
@@ -32,7 +29,7 @@ public class Delay extends Node implements Element {
             .addAttribute(Keys.DELAY_TIME);
 
     private final ObservableValue output;
-    private final int bits;
+    private final ValueSource bits;
     private final int delayTime;
     private ObservableValue input;
     private long[] value;
@@ -44,7 +41,7 @@ public class Delay extends Node implements Element {
      * @param attributes the attributes
      */
     public Delay(ElementAttributes attributes) {
-        bits = attributes.getBits();
+        bits = attributes.getBitSource();
         output = new ObservableValue("out", bits).setPinDescription(DESCRIPTION);
         int dt = attributes.get(Keys.DELAY_TIME);
         if (dt < 1)

@@ -6,10 +6,7 @@
 package de.neemann.digital.core.memory;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 
 import static de.neemann.digital.core.element.PinInfo.input;
@@ -31,7 +28,7 @@ public class Register extends Node implements Element, Countable {
             .addAttribute(Keys.IS_PROGRAM_COUNTER)
             .addAttribute(Keys.VALUE_IS_PROBE);
 
-    private final int bits;
+    private final ValueSource bits;
     private final boolean isProbe;
     private final String label;
     private final boolean isProgramCounter;
@@ -49,7 +46,7 @@ public class Register extends Node implements Element, Countable {
      */
     public Register(ElementAttributes attributes) {
         super(true);
-        bits = attributes.getBits();
+        bits = attributes.getBitSource();
         this.q = new ObservableValue("Q", bits).setPinDescription(DESCRIPTION);
         isProbe = attributes.get(Keys.VALUE_IS_PROBE);
         label = attributes.get(Keys.LABEL);
@@ -108,7 +105,7 @@ public class Register extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
 }

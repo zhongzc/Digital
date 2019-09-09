@@ -9,10 +9,7 @@ import de.neemann.digital.core.Node;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 import de.neemann.digital.lang.Lang;
 
@@ -26,7 +23,7 @@ import static de.neemann.digital.core.element.PinInfo.input;
  */
 public class Decoder extends Node implements Element, Countable {
 
-    private final int selectorBits;
+    private final ValueSource selectorBits;
     private final ObservableValues output;
     private ObservableValue selector;
 
@@ -48,8 +45,8 @@ public class Decoder extends Node implements Element, Countable {
      * @param attributes the attributes
      */
     public Decoder(ElementAttributes attributes) {
-        this.selectorBits = attributes.get(Keys.SELECTOR_BITS);
-        int outputs = 1 << selectorBits;
+        this.selectorBits = attributes.getSource(Keys.SELECTOR_BITS);
+        int outputs = 1 << selectorBits.get();
         ArrayList<ObservableValue> o = new ArrayList<>(outputs);
         for (int i = 0; i < outputs; i++)
             o.add(new ObservableValue("out_" + i, 1).setValue(0).setDescription(Lang.get("elem_Decoder_output", i)));
@@ -85,6 +82,6 @@ public class Decoder extends Node implements Element, Countable {
 
     @Override
     public int getAddrBits() {
-        return selectorBits;
+        return selectorBits.get();
     }
 }

@@ -49,7 +49,7 @@ public class LookUpTable extends Node implements Element {
      * @param attr the elements attributes
      */
     public LookUpTable(ElementAttributes attr) {
-        int bits = attr.getBits();
+        ValueSource bits = attr.getBitSource();
         output = new ObservableValue("out", bits).setPinDescription(DESCRIPTION);
         data = attr.get(Keys.DATA);
     }

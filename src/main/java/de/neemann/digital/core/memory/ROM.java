@@ -6,10 +6,7 @@
 package de.neemann.digital.core.memory;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.memory.importer.Importer;
 import de.neemann.digital.core.memory.rom.ROMInterface;
 
@@ -43,8 +40,8 @@ public class ROM extends Node implements Element, ROMInterface, ProgramMemory {
 
     private DataField data;
     private final ObservableValue output;
-    private final int addrBits;
-    private final int dataBits;
+    private final ValueSource addrBits;
+    private final ValueSource dataBits;
     private final File hexFile;
     private final boolean autoLoad;
     private final boolean isProgramMemory;
@@ -60,12 +57,12 @@ public class ROM extends Node implements Element, ROMInterface, ProgramMemory {
      * @param attr the elements attributes
      */
     public ROM(ElementAttributes attr) {
-        dataBits = attr.getBits();
+        dataBits = attr.getBitSource();
         output = new ObservableValue("D", dataBits)
                 .setToHighZ()
                 .setPinDescription(DESCRIPTION);
         data = attr.get(Keys.DATA);
-        addrBits = attr.get(Keys.ADDR_BITS);
+        addrBits = attr.getSource(Keys.ADDR_BITS);
         autoLoad = attr.get(Keys.AUTO_RELOAD_ROM);
         label = attr.getLabel();
         isProgramMemory = attr.get(Keys.IS_PROGRAM_MEMORY);
@@ -104,7 +101,7 @@ public class ROM extends Node implements Element, ROMInterface, ProgramMemory {
     public void init(Model model) throws NodeException {
         if (autoLoad) {
             try {
-                data = Importer.read(hexFile, dataBits);
+                data = Importer.read(hexFile, dataBits.get());
             } catch (IOException e) {
                 throw new NodeException(e.getMessage(), this, -1, null);
             }
@@ -137,11 +134,11 @@ public class ROM extends Node implements Element, ROMInterface, ProgramMemory {
 
     @Override
     public int getAddrBits() {
-        return addrBits;
+        return addrBits.get();
     }
 
     @Override
     public int getDataBits() {
-        return dataBits;
+        return dataBits.get();
     }
 }

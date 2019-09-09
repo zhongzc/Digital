@@ -6,10 +6,7 @@
 package de.neemann.digital.core.arithmetic;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 
 import static de.neemann.digital.core.element.PinInfo.input;
@@ -27,7 +24,7 @@ public class BitCount extends Node implements Element, Countable {
             .addAttribute(Keys.BITS);
 
     private final ObservableValue output;
-    private final int inBits;
+    private final ValueSource inBits;
     private ObservableValue input;
     private long value;
 
@@ -37,8 +34,8 @@ public class BitCount extends Node implements Element, Countable {
      * @param attributes attributes
      */
     public BitCount(ElementAttributes attributes) {
-        inBits = attributes.getBits();
-        int outBits = Bits.binLn2(inBits);
+        inBits = attributes.getBitSource();
+        int outBits = Bits.binLn2(inBits.get());
         output = new ObservableValue("out", outBits).setPinDescription(DESCRIPTION);
     }
 
@@ -64,6 +61,6 @@ public class BitCount extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return inBits;
+        return inBits.get();
     }
 }

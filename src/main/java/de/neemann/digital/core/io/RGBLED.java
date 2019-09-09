@@ -8,10 +8,7 @@ package de.neemann.digital.core.io;
 import de.neemann.digital.core.Model;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.draw.elements.PinException;
 
 import static de.neemann.digital.core.element.PinInfo.input;
@@ -30,7 +27,7 @@ public class RGBLED implements Element {
             .addAttribute(Keys.BITS)
             .addAttribute(Keys.LABEL);
 
-    private final int bits;
+    private final ValueSource bits;
 
     /**
      * Creates a new light bulb
@@ -38,7 +35,7 @@ public class RGBLED implements Element {
      * @param attr the attributes
      */
     public RGBLED(ElementAttributes attr) {
-        bits = attr.getBits();
+        bits = attr.getBitSource();
     }
 
     @Override

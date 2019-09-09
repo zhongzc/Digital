@@ -6,10 +6,7 @@
 package de.neemann.digital.core.arithmetic;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.stats.Countable;
 
 import static de.neemann.digital.core.ObservableValues.ovs;
@@ -29,7 +26,7 @@ public class Add extends Node implements Element, Countable {
             .addAttribute(Keys.LABEL)
             .addAttribute(Keys.BITS);
 
-    private final int bits;
+    private final ValueSource bits;
     private final ObservableValue sum;
     private final ObservableValue cOut;
     private ObservableValue a;
@@ -46,12 +43,12 @@ public class Add extends Node implements Element, Countable {
      * @param attributes the attributes
      */
     public Add(ElementAttributes attributes) {
-        bits = attributes.getBits();
+        bits = attributes.getBitSource();
 
         this.sum = new ObservableValue("s", bits).setPinDescription(DESCRIPTION);
         this.cOut = new ObservableValue("c_o", 1).setPinDescription(DESCRIPTION);
 
-        calc = createCalculation(bits);
+        calc = createCalculation(bits.get());
     }
 
     Calc createCalculation(int bits) {
@@ -107,7 +104,7 @@ public class Add extends Node implements Element, Countable {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
     interface Calc {

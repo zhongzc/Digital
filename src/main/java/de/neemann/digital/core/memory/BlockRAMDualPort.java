@@ -9,10 +9,7 @@ import de.neemann.digital.core.Node;
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 
 import static de.neemann.digital.core.element.PinInfo.input;
 
@@ -37,8 +34,8 @@ public class BlockRAMDualPort extends Node implements Element, RAMInterface {
 
     private DataField memory;
     private final ObservableValue output;
-    private final int addrBits;
-    private final int bits;
+    private final ValueSource addrBits;
+    private final ValueSource bits;
     private final String label;
     private final int size;
     private final boolean isProgramMemory;
@@ -56,10 +53,10 @@ public class BlockRAMDualPort extends Node implements Element, RAMInterface {
      */
     public BlockRAMDualPort(ElementAttributes attr) {
         super(true);
-        bits = attr.getBits();
+        bits = attr.getBitSource();
         output = new ObservableValue("D", bits).setPinDescription(DESCRIPTION);
-        addrBits = attr.get(Keys.ADDR_BITS);
-        size = 1 << addrBits;
+        addrBits = attr.getSource(Keys.ADDR_BITS);
+        size = 1 << addrBits.get();
         memory = new DataField(size);
         label = attr.getLabel();
         isProgramMemory = attr.get(Keys.IS_PROGRAM_MEMORY);
@@ -113,7 +110,7 @@ public class BlockRAMDualPort extends Node implements Element, RAMInterface {
 
     @Override
     public int getAddrBits() {
-        return addrBits;
+        return addrBits.get();
     }
 
     @Override
@@ -128,7 +125,7 @@ public class BlockRAMDualPort extends Node implements Element, RAMInterface {
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
 }

@@ -20,7 +20,7 @@ import static de.neemann.digital.core.element.PinInfo.input;
  */
 public class Multiplexer extends FanIn {
 
-    private final int selectorBits;
+    private final ValueSource selectorBits;
     private ObservableValue selector;
     private long value;
 
@@ -50,7 +50,7 @@ public class Multiplexer extends FanIn {
      */
     public Multiplexer(ElementAttributes attributes) {
         super(attributes);
-        this.selectorBits = attributes.get(Keys.SELECTOR_BITS);
+        this.selectorBits = attributes.getSource(Keys.SELECTOR_BITS);
         getOutput().setDescription(Lang.get("elem_Multiplexer_output"));
     }
 
@@ -71,12 +71,12 @@ public class Multiplexer extends FanIn {
         ObservableValues in = new ObservableValues(inputs, 1, inputs.size());
         super.setInputs(in);
 
-        if (in.size() != (1 << selectorBits))
+        if (in.size() != (1 << selectorBits.get()))
             throw new BitsException(Lang.get("err_selectorInputCountMismatch"), this, -1, selector);
     }
 
     @Override
     public int getAddrBits() {
-        return selectorBits;
+        return selectorBits.get();
     }
 }

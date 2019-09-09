@@ -33,7 +33,7 @@ public class PullDown implements Element {
      * @param attr the attributes
      */
     public PullDown(ElementAttributes attr) {
-        int bits = attr.getBits();
+        ValueSource bits = attr.getBitSource();
         output = new PullObservableValue(bits, PinDescription.PullResistor.pullDown).setPinDescription(DESCRIPTION);
     }
 
@@ -56,7 +56,7 @@ public class PullDown implements Element {
     public static final class PullObservableValue extends ObservableValue {
         private final PullResistor res;
 
-        PullObservableValue(int bits, PullResistor res) {
+        PullObservableValue(ValueSource bits, PullResistor res) {
             super("out", bits);
             setToHighZ();
             this.res = res;

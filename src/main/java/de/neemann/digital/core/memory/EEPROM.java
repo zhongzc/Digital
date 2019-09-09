@@ -6,10 +6,7 @@
 package de.neemann.digital.core.memory;
 
 import de.neemann.digital.core.*;
-import de.neemann.digital.core.element.Element;
-import de.neemann.digital.core.element.ElementAttributes;
-import de.neemann.digital.core.element.ElementTypeDescription;
-import de.neemann.digital.core.element.Keys;
+import de.neemann.digital.core.element.*;
 import de.neemann.digital.core.memory.rom.ROMInterface;
 
 import static de.neemann.digital.core.element.PinInfo.input;
@@ -35,8 +32,8 @@ public class EEPROM extends Node implements Element, RAMInterface, ROMInterface 
             .addAttribute(Keys.INVERTER_CONFIG)
             .addAttribute(Keys.DATA);
 
-    private final int bits;
-    private final int addrBits;
+    private final ValueSource bits;
+    private final ValueSource addrBits;
     private final ElementAttributes attr;
     private final int size;
     private final String label;
@@ -64,9 +61,9 @@ public class EEPROM extends Node implements Element, RAMInterface, ROMInterface 
     public EEPROM(ElementAttributes attr) {
         super(true);
         this.attr = attr;
-        bits = attr.getBits();
-        addrBits = attr.get(Keys.ADDR_BITS);
-        size = 1 << addrBits;
+        bits = attr.getBitSource();
+        addrBits = attr.getSource(Keys.ADDR_BITS);
+        size = 1 << addrBits.get();
         memory = attr.get(Keys.DATA);
         label = attr.getLabel();
         dataOut = new ObservableValue("D", bits)
@@ -144,12 +141,12 @@ public class EEPROM extends Node implements Element, RAMInterface, ROMInterface 
 
     @Override
     public int getDataBits() {
-        return bits;
+        return bits.get();
     }
 
     @Override
     public int getAddrBits() {
-        return addrBits;
+        return addrBits.get();
     }
 
     /**
