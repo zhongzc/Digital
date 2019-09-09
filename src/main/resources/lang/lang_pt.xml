@@ -756,7 +756,6 @@
   <string name="err_noShapeFoundFor_N">Nenhum formato encontrado para o componente {0}</string>
   <string name="err_noValueSetFor_N0_atElement_N1">Nenhuma conexão na entrada ''{0}'' do componente ''{1}''. Entradas abertas não são permitidas.</string>
   <string name="err_notAllOutputsSameBits">Nem todas as saídas têm a mesma largura de bits</string>
-  <string name="err_notAllOutputsSupportHighZ">Se múltiplas saídas estiverem conectadas, todas  deverão ser saídas tri-state.</string>
   <string name="err_noOutConnectedToWire">Nenhuma saída conectada ao fio ({0}). O estado do fio está indefinido.</string>
   <string name="err_oneResultIsRequired">Tabela sem valor. Pelo menos um resultado é requerido!</string>
   <string name="err_output_N_notDefined">Saída {0} não definida</string>

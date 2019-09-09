@@ -6,13 +6,19 @@
 package de.neemann.digital.draw.elements;
 
 import de.neemann.digital.core.ExceptionWithOrigin;
+import de.neemann.digital.core.FixableException;
+import de.neemann.digital.core.element.ValueSource;
 import de.neemann.digital.draw.model.Net;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Exception thrown dealing with pins
  */
-public class PinException extends ExceptionWithOrigin {
+public class PinException extends ExceptionWithOrigin implements FixableException {
     private Net net;
+    private List<Fix> fixes;
 
     /**
      * Creates a new instance
@@ -52,5 +58,27 @@ public class PinException extends ExceptionWithOrigin {
      */
     public Net getNet() {
         return net;
+    }
+
+    /**
+     * Adds a possible fix to this error
+     *
+     * @param bitSource the wrong value
+     * @param bits      the value that would fix the problem
+     * @return this for chained calls
+     */
+    public PinException addFix(ValueSource bitSource, int bits) {
+        if (bitSource != null && bits > 0) {
+            if (fixes == null)
+                fixes = new ArrayList<>();
+            fixes.add(new FixableException.Fix(bitSource, bits));
+        }
+        return this;
+    }
+
+
+    @Override
+    public List<Fix> getFixes() {
+        return fixes;
     }
 }

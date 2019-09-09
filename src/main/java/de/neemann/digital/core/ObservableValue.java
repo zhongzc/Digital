@@ -289,6 +289,13 @@ public class ObservableValue extends Observable implements PinDescription {
     }
 
     /**
+     * @return the source of the bits count
+     */
+    public ValueSource getBitSource() {
+        return bitSource;
+    }
+
+    /**
      * @return true if one of the bits is in high z state
      */
     public boolean isHighZ() {

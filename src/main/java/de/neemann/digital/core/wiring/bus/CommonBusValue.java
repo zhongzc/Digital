@@ -8,6 +8,7 @@ package de.neemann.digital.core.wiring.bus;
 import de.neemann.digital.core.NodeInterface;
 import de.neemann.digital.core.ObservableValue;
 import de.neemann.digital.core.ObservableValues;
+import de.neemann.digital.core.element.ValueSource;
 import de.neemann.digital.draw.elements.PinException;
 
 import java.io.File;
@@ -24,11 +25,11 @@ public final class CommonBusValue extends ObservableValue implements NodeInterfa
     private final File origin;
     private AbstractBusHandler handler;
 
-    CommonBusValue(int bits, BusModelStateObserver obs, PullResistor resistor, ObservableValue[] inputs) {
+    CommonBusValue(ValueSource bits, BusModelStateObserver obs, PullResistor resistor, ObservableValue[] inputs) {
         this(bits, obs, resistor, inputs, null);
     }
 
-    CommonBusValue(int bits, BusModelStateObserver obs, PullResistor resistor, ObservableValue[] inputs, File origin) {
+    CommonBusValue(ValueSource bits, BusModelStateObserver obs, PullResistor resistor, ObservableValue[] inputs, File origin) {
         super("commonBusOut", bits);
         if (resistor.equals(PullResistor.none))
             setToHighZ();

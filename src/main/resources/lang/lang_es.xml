@@ -741,7 +741,6 @@
   <string name="err_noShapeFoundFor_N">No hay forma para el componente {0}</string>
   <string name="err_noValueSetFor_N0_atElement_N1">Nada conectado a la entrada ''{0}'' del componente ''{1}''. No se permiten entradas abiertas.</string>
   <string name="err_notAllOutputsSameBits">No todas las salidas conectadas tienen el mismo número de bits</string>
-  <string name="err_notAllOutputsSupportHighZ">Si múltiples salidas están conectadas juntas, todas tienen que ser salidas de tres estados.</string>
   <string name="err_noOutConnectedToWire">Ninguna salida conectada a un cable ({0}). El estado del cable es indeterminado.</string>
   <string name="err_oneResultIsRequired">Tabla demasiado pequeña: se necesita un resultado</string>
   <string name="err_output_N_notDefined">Salida {0} no definida</string>

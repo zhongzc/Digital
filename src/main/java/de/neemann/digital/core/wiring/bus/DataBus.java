@@ -7,7 +7,9 @@ package de.neemann.digital.core.wiring.bus;
 
 import de.neemann.digital.core.Model;
 import de.neemann.digital.core.ObservableValue;
+import de.neemann.digital.core.element.ElementAttributes;
 import de.neemann.digital.core.element.PinDescription;
+import de.neemann.digital.core.element.ValueSource;
 import de.neemann.digital.draw.elements.Pin;
 import de.neemann.digital.draw.elements.PinException;
 import de.neemann.digital.draw.model.Net;
@@ -54,15 +56,22 @@ public class DataBus {
      * @throws PinException PinException
      */
     public DataBus(Net net, Model model, ObservableValue... outputs) throws PinException {
-        int bits = 0;
         PinDescription.PullResistor resistor = PinDescription.PullResistor.none;
+        ValueSource bitSource = null;
+        int bits = 0;
+        ObservableValue first = null;
         for (ObservableValue o : outputs) {
-            int b = o.getBits();
-            if (bits == 0) bits = b;
-            else {
-                if (bits != b)
-                    throw new PinException(Lang.get("err_notAllOutputsSameBits"), net);
+            if (first == null) {
+                first = o;
+                bits = first.getBits();
+            } else {
+                if (bits != o.getBits())
+                    throw new PinException(Lang.get("err_notAllOutputsSameBits"), net)
+                            .addFix(o.getBitSource(), first.getBits())
+                            .addFix(first.getBitSource(), o.getBits());
             }
+            if (bitSource == null && o.getBitSource() != null)
+                bitSource = o.getBitSource();
 
             switch (o.getPullResistor()) {
                 case pullDown:
@@ -84,7 +93,9 @@ public class DataBus {
             model.addObserver(obs);
         }
 
-        commonBusValue = new CommonBusValue(bits, obs, resistor, outputs, net == null ? null : net.getOrigin());
+        if (bitSource == null)
+            bitSource = new ElementAttributes().setBits(bits).getBitSource();
+        commonBusValue = new CommonBusValue(bitSource, obs, resistor, outputs, net == null ? null : net.getOrigin());
         for (ObservableValue p : outputs)
             p.addObserverToValue(commonBusValue);
         commonBusValue.hasChanged();

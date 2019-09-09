@@ -6,6 +6,7 @@
 package de.neemann.digital.gui;
 
 import de.neemann.digital.core.BitsException;
+import de.neemann.digital.core.FixableException;
 import de.neemann.digital.core.element.ElementAttributes;
 import de.neemann.digital.draw.elements.VisualElement;
 import de.neemann.digital.draw.library.ElementNotFoundException;
@@ -36,13 +37,14 @@ public final class AutoFixDialog {
      * @return a dialog or null if there are no valid fixes
      */
     public static ErrorMessage.ErrorDialog create(Main main, String message, Exception cause) {
-        if (cause instanceof BitsException) {
-            BitsException bitsException = (BitsException) cause;
-            if (!bitsException.hasFix())
+        if (cause instanceof FixableException) {
+            FixableException fixable = (FixableException) cause;
+            List<FixableException.Fix> fixes = fixable.getFixes();
+            if (fixes == null || fixes.isEmpty())
                 return null;
 
             ArrayList<ValidFix> validFixes = new ArrayList<>();
-            for (BitsException.Fix f : bitsException.getFixes()) {
+            for (BitsException.Fix f : fixes) {
                 ElementAttributes bitSource = f.getBitSource().getAttr();
                 List<VisualElement> l = main.getCircuitComponent().getCircuit().getElements(v -> v.getElementAttributes() == bitSource);
                 if (l.size() == 1) {

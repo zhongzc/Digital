@@ -6,10 +6,13 @@
 package de.neemann.digital.core.wiring.bus;
 
 import de.neemann.digital.core.ObservableValue;
+import de.neemann.digital.core.element.ElementAttributes;
 import de.neemann.digital.core.element.PinDescription;
+import de.neemann.digital.core.element.ValueSource;
 import junit.framework.TestCase;
 
 /**
+ *
  */
 public class ConnectedBusHandlerTest extends TestCase {
 
@@ -17,17 +20,18 @@ public class ConnectedBusHandlerTest extends TestCase {
         BusModelStateObserver obs = new BusModelStateObserver();
         ConnectedBusHandler cbh = new ConnectedBusHandler(obs);
 
-        cbh.addNet(new CommonBusValue(1, obs, PinDescription.PullResistor.none, new ObservableValue[]{}));
+        ValueSource bs = new ElementAttributes().setBits(1).getBitSource();
+        cbh.addNet(new CommonBusValue(bs, obs, PinDescription.PullResistor.none, new ObservableValue[]{}));
         assertEquals(PinDescription.PullResistor.none, cbh.getResistor());
-        cbh.addNet(new CommonBusValue(1, obs, PinDescription.PullResistor.pullUp, new ObservableValue[]{}));
+        cbh.addNet(new CommonBusValue(bs, obs, PinDescription.PullResistor.pullUp, new ObservableValue[]{}));
         assertEquals(PinDescription.PullResistor.pullUp, cbh.getResistor());
-        cbh.addNet(new CommonBusValue(1, obs, PinDescription.PullResistor.pullDown, new ObservableValue[]{}));
+        cbh.addNet(new CommonBusValue(bs, obs, PinDescription.PullResistor.pullDown, new ObservableValue[]{}));
         assertEquals(PinDescription.PullResistor.both, cbh.getResistor());
-        cbh.addNet(new CommonBusValue(1, obs, PinDescription.PullResistor.pullDown, new ObservableValue[]{}));
+        cbh.addNet(new CommonBusValue(bs, obs, PinDescription.PullResistor.pullDown, new ObservableValue[]{}));
         assertEquals(PinDescription.PullResistor.both, cbh.getResistor());
-        cbh.addNet(new CommonBusValue(1, obs, PinDescription.PullResistor.pullUp, new ObservableValue[]{}));
+        cbh.addNet(new CommonBusValue(bs, obs, PinDescription.PullResistor.pullUp, new ObservableValue[]{}));
         assertEquals(PinDescription.PullResistor.both, cbh.getResistor());
-        cbh.addNet(new CommonBusValue(1, obs, PinDescription.PullResistor.none, new ObservableValue[]{}));
+        cbh.addNet(new CommonBusValue(bs, obs, PinDescription.PullResistor.none, new ObservableValue[]{}));
         assertEquals(PinDescription.PullResistor.both, cbh.getResistor());
     }
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Is thrown if bit count is not matching
  */
-public class BitsException extends NodeException {
+public class BitsException extends NodeException implements FixableException {
 
     private ArrayList<Fix> fixes;
 
@@ -83,49 +83,14 @@ public class BitsException extends NodeException {
         if (bitSource != null && bits > 0) {
             if (fixes == null)
                 fixes = new ArrayList<>();
-            fixes.add(new Fix(bitSource, bits));
+            fixes.add(new FixableException.Fix(bitSource, bits));
         }
         return this;
     }
 
-    /**
-     * @return true if there are some fixes
-     */
-    public boolean hasFix() {
-        return fixes != null && !fixes.isEmpty();
-    }
-
-    /**
-     * @return the fixes
-     */
+    @Override
     public ArrayList<Fix> getFixes() {
         return fixes;
     }
 
-    /**
-     * A fix which can solve the problem
-     */
-    public static final class Fix {
-        private final ValueSource bitSource;
-        private final int bitsToFixTheProblem;
-
-        private Fix(ValueSource bitSource, int bitsToFixTheProblem) {
-            this.bitSource = bitSource;
-            this.bitsToFixTheProblem = bitsToFixTheProblem;
-        }
-
-        /**
-         * @return the original bits source
-         */
-        public ValueSource getBitSource() {
-            return bitSource;
-        }
-
-        /**
-         * @return the bit value which would fix the problem
-         */
-        public int getBitsToFixTheProblem() {
-            return bitsToFixTheProblem;
-        }
-    }
 }
