@@ -61,7 +61,7 @@ public class RAMDualAccess extends Node implements Element, RAMInterface {
      */
     public RAMDualAccess(ElementAttributes attr) {
         super(true);
-        bits = attr.get(Keys.BITS);
+        bits = attr.getBits();
         out1 = new ObservableValue("1D", bits)
                 .setToHighZ()
                 .setPinDescription(DESCRIPTION);

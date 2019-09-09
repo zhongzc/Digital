@@ -44,7 +44,7 @@ public class Mul extends Node implements Element, Countable {
      */
     public Mul(ElementAttributes attributes) {
         signed = attributes.get(Keys.SIGNED);
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
         int outBits = this.bits * 2;
         if (outBits > 64)  // used to avoid strange error conditions. The init method throws the exception
             outBits = 64;

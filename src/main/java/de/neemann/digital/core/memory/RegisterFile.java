@@ -60,7 +60,7 @@ public class RegisterFile extends Node implements Element, RAMInterface {
      */
     public RegisterFile(ElementAttributes attr) {
         super(true);
-        bits = attr.get(Keys.BITS);
+        bits = attr.getBits();
         out1 = new ObservableValue("Da", bits).setPinDescription(DESCRIPTION);
         out2 = new ObservableValue("Db", bits).setPinDescription(DESCRIPTION);
         addrBits = attr.get(Keys.ADDR_BITS);

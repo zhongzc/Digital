@@ -35,7 +35,7 @@ public class Ground implements Element {
      * @param attributes the attributes
      */
     public Ground(ElementAttributes attributes) {
-        output = new ObservableValue("out", attributes.get(Keys.BITS)).setPinDescription(DESCRIPTION);
+        output = new ObservableValue("out", attributes.getBits()).setPinDescription(DESCRIPTION);
         output.setValue(0);
         output.setConstant();
     }

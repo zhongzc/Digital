@@ -49,7 +49,7 @@ public class BarrelShifter extends Node implements Element, Countable {
     public BarrelShifter(ElementAttributes attributes) {
         direction = attributes.get(Keys.DIRECTION);
         mode = attributes.get(Keys.BARREL_SHIFTER_MODE);
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
         signed = attributes.get(Keys.BARREL_SIGNED);
 
         int sBits = Bits.binLn2(bits);

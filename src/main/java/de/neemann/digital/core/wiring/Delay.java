@@ -44,7 +44,7 @@ public class Delay extends Node implements Element {
      * @param attributes the attributes
      */
     public Delay(ElementAttributes attributes) {
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
         output = new ObservableValue("out", bits).setPinDescription(DESCRIPTION);
         int dt = attributes.get(Keys.DELAY_TIME);
         if (dt < 1)

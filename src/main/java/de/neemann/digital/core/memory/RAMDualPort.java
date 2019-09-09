@@ -56,7 +56,7 @@ public class RAMDualPort extends Node implements Element, RAMInterface {
      */
     public RAMDualPort(ElementAttributes attr) {
         super(true);
-        bits = attr.get(Keys.BITS);
+        bits = attr.getBits();
         output = createOutput();
         addrBits = attr.get(Keys.ADDR_BITS);
         size = 1 << addrBits;

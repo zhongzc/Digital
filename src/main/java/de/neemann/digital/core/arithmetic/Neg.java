@@ -40,7 +40,7 @@ public class Neg extends Node implements Element, Countable {
      * @param attributes attributes
      */
     public Neg(ElementAttributes attributes) {
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
         output = new ObservableValue("out", bits).setPinDescription(DESCRIPTION);
     }
 

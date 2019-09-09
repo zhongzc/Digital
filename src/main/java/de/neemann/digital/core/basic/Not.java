@@ -41,7 +41,7 @@ public class Not extends Node implements Element, Countable {
      * @param attributes the attributes
      */
     public Not(ElementAttributes attributes) {
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
         output = new ObservableValue("out", bits).setPinDescription(DESCRIPTION);
     }
 

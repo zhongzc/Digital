@@ -34,10 +34,10 @@ public abstract class FanIn extends Node implements Element, Countable {
     /**
      * Creates a new instance
      *
-     * @param bits the number of bits
+     * @param attributes used to get the number of bits
      */
-    public FanIn(int bits) {
-        this.bits = bits;
+    public FanIn(ElementAttributes attributes) {
+        this.bits = attributes.getBits();
         inputs = new ArrayList<>();
         output = new ObservableValue("out", bits).setDescription(Lang.get("elem_Basic_Out"));
     }

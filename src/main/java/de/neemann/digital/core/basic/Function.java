@@ -7,6 +7,7 @@ package de.neemann.digital.core.basic;
 
 import de.neemann.digital.core.NodeException;
 import de.neemann.digital.core.ObservableValue;
+import de.neemann.digital.core.element.ElementAttributes;
 
 import java.util.ArrayList;
 
@@ -16,8 +17,8 @@ abstract class Function extends FanIn {
 
     private long value;
 
-    Function(int bits) {
-        super(bits);
+    Function(ElementAttributes attributes) {
+        super(attributes);
     }
 
     @Override

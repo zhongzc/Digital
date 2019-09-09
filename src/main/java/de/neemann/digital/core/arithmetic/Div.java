@@ -48,7 +48,7 @@ public class Div extends Node implements Element, Countable {
      */
     public Div(ElementAttributes attributes) {
         signed = attributes.get(Keys.SIGNED);
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
         this.quotient = new ObservableValue("q", bits).setPinDescription(DESCRIPTION);
         this.remainder = new ObservableValue("r", bits).setPinDescription(DESCRIPTION);
     }

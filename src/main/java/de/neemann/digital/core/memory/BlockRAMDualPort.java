@@ -56,7 +56,7 @@ public class BlockRAMDualPort extends Node implements Element, RAMInterface {
      */
     public BlockRAMDualPort(ElementAttributes attr) {
         super(true);
-        bits = attr.get(Keys.BITS);
+        bits = attr.getBits();
         output = new ObservableValue("D", bits).setPinDescription(DESCRIPTION);
         addrBits = attr.get(Keys.ADDR_BITS);
         size = 1 << addrBits;

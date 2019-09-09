@@ -35,7 +35,7 @@ public class VDD implements Element {
      * @param attributes the attributes
      */
     public VDD(ElementAttributes attributes) {
-        output = new ObservableValue("out", attributes.get(Keys.BITS)).setPinDescription(DESCRIPTION);
+        output = new ObservableValue("out", attributes.getBits()).setPinDescription(DESCRIPTION);
         output.setValue(-1);
         output.setConstant();
     }

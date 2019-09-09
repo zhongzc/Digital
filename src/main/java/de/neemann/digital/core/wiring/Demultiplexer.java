@@ -54,7 +54,7 @@ public class Demultiplexer extends Node implements Element, Countable {
      * @param attributes the attributes
      */
     public Demultiplexer(ElementAttributes attributes) {
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
         this.selectorBits = attributes.get(Keys.SELECTOR_BITS);
         this.defaultValue = attributes.get(Keys.DEFAULT);
         int outputs = 1 << selectorBits;

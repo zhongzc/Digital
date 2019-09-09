@@ -37,7 +37,7 @@ public class BitCount extends Node implements Element, Countable {
      * @param attributes attributes
      */
     public BitCount(ElementAttributes attributes) {
-        inBits = attributes.get(Keys.BITS);
+        inBits = attributes.getBits();
         int outBits = Bits.binLn2(inBits);
         output = new ObservableValue("out", outBits).setPinDescription(DESCRIPTION);
     }

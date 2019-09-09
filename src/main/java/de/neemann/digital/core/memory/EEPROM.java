@@ -64,7 +64,7 @@ public class EEPROM extends Node implements Element, RAMInterface, ROMInterface 
     public EEPROM(ElementAttributes attr) {
         super(true);
         this.attr = attr;
-        bits = attr.get(Keys.BITS);
+        bits = attr.getBits();
         addrBits = attr.get(Keys.ADDR_BITS);
         size = 1 << addrBits;
         memory = attr.get(Keys.DATA);

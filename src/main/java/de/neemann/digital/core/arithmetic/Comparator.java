@@ -50,7 +50,7 @@ public class Comparator extends Node implements Element, Countable {
      */
     public Comparator(ElementAttributes attributes) {
         signed = attributes.get(Keys.SIGNED);
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
 
         this.agrb = new ObservableValue(">", 1).setPinDescription(DESCRIPTION);
         this.equals = new ObservableValue("=", 1).setPinDescription(DESCRIPTION);

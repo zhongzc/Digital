@@ -45,7 +45,7 @@ public class Driver extends Node implements Element, Countable {
      * @param attributes the attributes
      */
     public Driver(ElementAttributes attributes) {
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
         output = new ObservableValue("out", bits)
                 .setToHighZ()
                 .setPinDescription(DESCRIPTION);

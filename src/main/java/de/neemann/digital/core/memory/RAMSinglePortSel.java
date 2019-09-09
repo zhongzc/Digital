@@ -62,7 +62,7 @@ public class RAMSinglePortSel extends Node implements Element, RAMInterface {
      */
     public RAMSinglePortSel(ElementAttributes attr) {
         super(true);
-        bits = attr.get(Keys.BITS);
+        bits = attr.getBits();
         addrBits = attr.get(Keys.ADDR_BITS);
         size = 1 << addrBits;
         memory = new DataField(size);

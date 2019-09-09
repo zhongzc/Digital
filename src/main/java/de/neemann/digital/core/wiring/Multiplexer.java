@@ -49,7 +49,7 @@ public class Multiplexer extends FanIn {
      * @param attributes the attributes
      */
     public Multiplexer(ElementAttributes attributes) {
-        super(attributes.get(Keys.BITS));
+        super(attributes);
         this.selectorBits = attributes.get(Keys.SELECTOR_BITS);
         getOutput().setDescription(Lang.get("elem_Multiplexer_output"));
     }

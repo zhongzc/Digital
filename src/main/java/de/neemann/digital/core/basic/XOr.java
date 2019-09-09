@@ -29,7 +29,7 @@ public class XOr extends Function {
      * @param attributes the attributes
      */
     public XOr(ElementAttributes attributes) {
-        super(attributes.get(Keys.BITS));
+        super(attributes);
     }
 
     @Override

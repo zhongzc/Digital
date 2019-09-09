@@ -60,7 +60,7 @@ public class ROM extends Node implements Element, ROMInterface, ProgramMemory {
      * @param attr the elements attributes
      */
     public ROM(ElementAttributes attr) {
-        dataBits = attr.get(Keys.BITS);
+        dataBits = attr.getBits();
         output = new ObservableValue("D", dataBits)
                 .setToHighZ()
                 .setPinDescription(DESCRIPTION);

@@ -46,7 +46,7 @@ public class Add extends Node implements Element, Countable {
      * @param attributes the attributes
      */
     public Add(ElementAttributes attributes) {
-        bits = attributes.get(Keys.BITS);
+        bits = attributes.getBits();
 
         this.sum = new ObservableValue("s", bits).setPinDescription(DESCRIPTION);
         this.cOut = new ObservableValue("c_o", 1).setPinDescription(DESCRIPTION);

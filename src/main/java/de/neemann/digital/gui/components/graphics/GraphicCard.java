@@ -77,7 +77,7 @@ public class GraphicCard extends Node implements Element, RAMInterface {
         width = attr.get(Keys.GRAPHIC_WIDTH);
         height = attr.get(Keys.GRAPHIC_HEIGHT);
         bankSize = width * height;
-        bits = attr.get(Keys.BITS);
+        bits = attr.getBits();
         size = bankSize * 2;
 
         int aBits = 1;
