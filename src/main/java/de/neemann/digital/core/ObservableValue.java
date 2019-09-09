@@ -21,6 +21,7 @@ public class ObservableValue extends Observable implements PinDescription {
     private final long mask;
     private final long signedFlag;
     private final int bits;
+    private ValueSource bitSource;
     // the value, high z bits are always set to zero
     private long value;
     // the high z state of each bit
@@ -39,6 +40,7 @@ public class ObservableValue extends Observable implements PinDescription {
      */
     public ObservableValue(String name, ValueSource bits) {
         this(name, bits.get());
+        bitSource = bits;
     }
 
     /**
@@ -279,7 +281,9 @@ public class ObservableValue extends Observable implements PinDescription {
 
     private ObservableValue checkBits(int bits, ValueSource bitSource, Node node, int input) throws BitsException {
         if (this.bits != bits) {
-            throw new BitsException(Lang.get("err_needs_N0_bits_found_N2_bits", bits, this.bits), node, input, this);
+            throw new BitsException(Lang.get("err_needs_N0_bits_found_N2_bits", bits, this.bits), node, input, this)
+                    .addFix(bitSource, this.bits)
+                    .addFix(this.bitSource, bits);
         }
         return this;
     }

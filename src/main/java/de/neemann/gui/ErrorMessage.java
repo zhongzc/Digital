@@ -92,9 +92,19 @@ public class ErrorMessage implements Runnable {
      * @param parent the parent
      */
     public void show(Component parent) {
-        ErrorDialog dialog = new ErrorDialog(parent, Lang.get("error"), message.toString());
+        ErrorDialog dialog = new ErrorDialog(parent, Lang.get("error"), message.toString(), true);
         dialog.setVisible(true);
         dialog.dispose();
+    }
+
+    /**
+     * Creates the dialog without the ok button
+     *
+     * @param parent the parent component
+     * @return the dialog
+     */
+    public ErrorDialog createDialog(Component parent) {
+        return new ErrorDialog(parent, Lang.get("error"), message.toString(), false);
     }
 
     /**
@@ -121,7 +131,7 @@ public class ErrorMessage implements Runnable {
         private static final Icon ICON = IconCreator.create("dialog-error.png");
         private String errorMessage;
 
-        private ErrorDialog(Component parent, String title, String message) {
+        private ErrorDialog(Component parent, String title, String message, boolean addButton) {
             super(getParentWindow(parent), title, ModalityType.APPLICATION_MODAL);
             setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -147,15 +157,17 @@ public class ErrorMessage implements Runnable {
                 scrollPane.setBorder(BorderFactory.createEmptyBorder(border, border, border, border));
             }
 
-            JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-            JButton button = new JButton(new AbstractAction(Lang.get("ok")) {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    dispose();
-                }
-            });
-            buttons.add(button);
-            getContentPane().add(buttons, BorderLayout.SOUTH);
+            if (addButton) {
+                JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+                JButton button = new JButton(new AbstractAction(Lang.get("ok")) {
+                    @Override
+                    public void actionPerformed(ActionEvent actionEvent) {
+                        dispose();
+                    }
+                });
+                buttons.add(button);
+                getContentPane().add(buttons, BorderLayout.SOUTH);
+            }
 
             JLabel l = new JLabel(ICON);
             l.setVerticalAlignment(JLabel.TOP);

@@ -6,11 +6,16 @@
 package de.neemann.digital.core;
 
 import de.neemann.digital.core.element.ImmutableList;
+import de.neemann.digital.core.element.ValueSource;
+
+import java.util.ArrayList;
 
 /**
  * Is thrown if bit count is not matching
  */
 public class BitsException extends NodeException {
+
+    private ArrayList<Fix> fixes;
 
     /**
      * Creates a new instance.
@@ -65,5 +70,62 @@ public class BitsException extends NodeException {
      */
     public BitsException(String message, Node node, int input, ImmutableList<ObservableValue> values) {
         super(message, node, input, values);
+    }
+
+    /**
+     * Adds a possible fix to this error
+     *
+     * @param bitSource the wrong value
+     * @param bits      the value that would fix the problem
+     * @return this for chained calls
+     */
+    public BitsException addFix(ValueSource bitSource, int bits) {
+        if (bitSource != null && bits > 0) {
+            if (fixes == null)
+                fixes = new ArrayList<>();
+            fixes.add(new Fix(bitSource, bits));
+        }
+        return this;
+    }
+
+    /**
+     * @return true if there are some fixes
+     */
+    public boolean hasFix() {
+        return fixes != null && !fixes.isEmpty();
+    }
+
+    /**
+     * @return the fixes
+     */
+    public ArrayList<Fix> getFixes() {
+        return fixes;
+    }
+
+    /**
+     * A fix which can solve the problem
+     */
+    public static final class Fix {
+        private final ValueSource bitSource;
+        private final int bitsToFixTheProblem;
+
+        private Fix(ValueSource bitSource, int bitsToFixTheProblem) {
+            this.bitSource = bitSource;
+            this.bitsToFixTheProblem = bitsToFixTheProblem;
+        }
+
+        /**
+         * @return the original bits source
+         */
+        public ValueSource getBitSource() {
+            return bitSource;
+        }
+
+        /**
+         * @return the bit value which would fix the problem
+         */
+        public int getBitsToFixTheProblem() {
+            return bitsToFixTheProblem;
+        }
     }
 }

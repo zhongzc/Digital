@@ -1308,6 +1308,13 @@ public final class Main extends JFrame implements ClosingWindowListener.ConfirmS
         return false;
     }
 
+    /**
+     * @return the element library
+     */
+    public ElementLibrary getLibrary() {
+        return library;
+    }
+
     private class RunModelState extends State {
         @Override
         public void enter() {
@@ -1525,7 +1532,12 @@ public final class Main extends JFrame implements ClosingWindowListener.ConfirmS
         }
         circuitComponent.setHighLightStyle(Style.ERROR);
         circuitComponent.graphicHasChanged();
-        new ErrorMessage(message).addCause(cause).show(Main.this);
+
+        ErrorMessage.ErrorDialog errorDialog = AutoFixDialog.create(Main.this, message, cause);
+        if (errorDialog != null) {
+            errorDialog.setVisible(true);
+        } else
+            new ErrorMessage(message).addCause(cause).show(Main.this);
         ensureModelIsStopped();
     }
 
