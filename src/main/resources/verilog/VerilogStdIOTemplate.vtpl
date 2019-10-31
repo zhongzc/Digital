@@ -110,7 +110,7 @@ module stdIOInterface;
             #1;
 
             if (res == 1) begin
-                $display("Digital:%b", mainOut);
+                $display("Digiblock:%b", mainOut);
                 $fflush('h8000_0001);
             end
             else

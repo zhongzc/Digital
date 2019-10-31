@@ -26,7 +26,7 @@ The first argument is the executable which needs to be started and the further a
 to this executable. In this case the programm `vivado` is started. The attribute `requires` defines 
 which hardware description language (hdl) is necessary to start the program.
 Up to now only `vhdl` and `verilog` is supported.
-The `timeout` attribute defines how long digital should wait before a timeout exception is thrown
+The `timeout` attribute defines how long digiblock should wait before a timeout exception is thrown
 which also terminates the external program.
 Because Vivado is a GUI application, which can run for a long time, this value is set to zero
 which means no timout check at all.
@@ -79,7 +79,7 @@ The `file`-tag has a `name` attribute which defines the file name. The `overwrit
 defines the behaviour if the file already exists. If the value is set to `true` the file is 
 overwritten. If the value is set to `false` a existing file is not changed. This is handy for
 a project file template, which is modified after its creation by a tool like Vivado or ISE 
-and you don't want to overwrite this modifications every time the tool is started by Digital.
+and you don't want to overwrite this modifications every time the tool is started by Digiblock.
 The `filter` attribute enables the filtering of the files content. And finally the `id` attribute 
 is used to include this file file from other `.config` files.
 The `content` tag defines the content of the file created.

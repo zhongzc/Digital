@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.neemann.digital</groupId>
-    <artifactId>digital</artifactId>
+    <groupId>de.neemann.digiblock</groupId>
+    <artifactId>digiblock</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Digital</name>
-    <url>https://github.com/hneemann/Digital</url>
+    <name>Digiblock</name>
+    <url>https://github.com/hneemann/Digiblock</url>
 
     <properties>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
@@ -141,7 +141,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>de.neemann.digital.gui.Main</mainClass>
+                            <mainClass>de.neemann.digiblock.gui.Main</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Build-SCM-Revision>${git.commit.id.describe}</Build-SCM-Revision>
@@ -196,7 +196,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    <finalName>Digital</finalName>
+                    <finalName>Digiblock</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <attach>false</attach>
                     <descriptorRefs>
@@ -205,7 +205,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>de.neemann.digital.gui.Main</mainClass>
+                            <mainClass>de.neemann.digiblock.gui.Main</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Build-SCM-Revision>${git.commit.id.describe}</Build-SCM-Revision>

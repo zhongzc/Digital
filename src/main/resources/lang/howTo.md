@@ -1,6 +1,6 @@
 ## Translations ##
 
-If someone wants to contribute a new translation to Digital,
+If someone wants to contribute a new translation to Digiblock,
 the problem is not only to create the new translation.
 There must be a way of maintaining the translation as the
 program evolves.
@@ -38,7 +38,7 @@ the reference file.
 
 ## How to add a new Language ##
 
-Add the new language to the file "Digital/src/main/resources/lang/lang.xml"
+Add the new language to the file "Digiblock/src/main/resources/lang/lang.xml"
 Then start the language test by running 
 
 ```
@@ -48,15 +48,15 @@ mvn -Dtest=TestLang test
 Now all necessary files are created. In the target folder you can 
 find a diff file that contains all missing keys. Now you can start 
 adding your translation. **Copy this file to another location! The file 
-will be overwritten every time Digital is built!** 
+will be overwritten every time Digiblock is built!** 
 Use the Language Importer
-"Digital/src/test/java/de/neemann/digital/lang/LanguageUpdater.java" to 
+"Digiblock/src/test/java/de/neemann/digiblock/lang/LanguageUpdater.java" to 
 import your work. It is possible to import only partially translated files. 
 This helps you to test your translation step by step.   
 
 ## How to find keys that need to be revised later on ##
 
-Digital contains some test cases that check the consistency of
+Digiblock contains some test cases that check the consistency of
 the translations. The test class "TestLang" checks the consistency
 of the language files.
 
@@ -70,5 +70,5 @@ mvn -Dtest=TestLang test
 This gives you a diff file for each language. This file contains all 
 keys that have been added or modified. You can now add or update the 
 language fragments contained in this file. After that start the class
-"Digital/src/test/java/de/neemann/digital/lang/LanguageUpdater.java".
+"Digiblock/src/test/java/de/neemann/digiblock/lang/LanguageUpdater.java".
 This allows you to select the reworked diff file and import it.

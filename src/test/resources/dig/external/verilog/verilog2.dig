@@ -151,7 +151,7 @@ end loop
         </entry>
         <entry>
           <string>externalParameters</string>
-          <string>/home/hneemann/temp/Digital/go/go</string>
+          <string>/home/hneemann/temp/Digiblock/go/go</string>
         </entry>
         <entry>
           <string>processType</string>
@@ -198,7 +198,7 @@ endmodule</string>
         </entry>
         <entry>
           <string>externalParameters</string>
-          <string>/home/hneemann/temp/Digital/go/go</string>
+          <string>/home/hneemann/temp/Digiblock/go/go</string>
         </entry>
         <entry>
           <string>processType</string>

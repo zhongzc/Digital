@@ -6,7 +6,7 @@
 package de.neemann.gui.language;
 
 import com.thoughtworks.xstream.XStream;
-import de.neemann.digital.XStreamValid;
+import de.neemann.digiblock.XStreamValid;
 
 import java.io.InputStream;
 import java.util.ArrayList;

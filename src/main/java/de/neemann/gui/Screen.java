@@ -11,8 +11,8 @@ package de.neemann.gui;
  * Linux    : getScreenResolution() = 95
  */
 
-import de.neemann.digital.core.element.Keys;
-import de.neemann.digital.gui.Settings;
+import de.neemann.digiblock.core.element.Keys;
+import de.neemann.digiblock.gui.Settings;
 
 import javax.swing.*;
 import java.awt.*;

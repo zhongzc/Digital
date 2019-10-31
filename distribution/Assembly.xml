@@ -7,19 +7,19 @@
     </formats>
     <files>
         <file>
-            <source>${basedir}/target/Digital.jar</source>
+            <source>${basedir}/target/Digiblock.jar</source>
             <outputDirectory>/</outputDirectory>
         </file>
         <file>
-            <source>${basedir}/distribution/Digital.exe</source>
+            <source>${basedir}/distribution/Digiblock.exe</source>
             <outputDirectory>/</outputDirectory>
         </file>
         <file>
-            <source>${basedir}/distribution/Digital_noD3D.exe</source>
+            <source>${basedir}/distribution/Digiblock_noD3D.exe</source>
             <outputDirectory>/</outputDirectory>
         </file>
         <file>
-            <source>${basedir}/distribution/Digital.sh</source>
+            <source>${basedir}/distribution/Digiblock.sh</source>
             <outputDirectory>/</outputDirectory>
         </file>
         <file>

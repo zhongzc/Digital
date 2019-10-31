@@ -52,7 +52,7 @@
 		una plantilla SVG y luego editarla</string>
   <string name="msg_warning">Aviso</string>
   <string name="cancel">Cancelar</string>
-  <string name="digital">Digital</string>
+  <string name="digiblock">Digiblock</string>
   <string name="expression">Expresión</string>
   <string name="elem_Help_inputs">Entradas</string>
   <string name="elem_Help_outputs">Salidas</string>
@@ -103,7 +103,7 @@
   <string name="elem_Delay">Retardo</string>
   <string name="elem_Delay_tt">Retarda la señal en función de un tiempo de propagación.
 		Retarda una señal por un número ajustable de retardos de puertas.
-		Todos los demás componentes de Digital tienen un retardo de puerta como retardo de propagación</string>
+		Todos los demás componentes de Digiblock tienen un retardo de puerta como retardo de propagación</string>
   <string name="elem_Delay_pin_in">Entrada de la señal que se va a retardar</string>
   <string name="elem_Delay_pin_out">La señal de entrada retrasada un tiempo de retardo de puerta</string>
   <string name="elem_Out">Salida</string>
@@ -865,8 +865,8 @@
   <string name="err_ifExternalComponentIsUsedTwiceCodeMustBeIdentical_N">¡Si un componente externo se usa múltiples veces, el código debe ser idéntico! Efectos: {0}</string>
   <string name="err_writingToStdOut_O">No se pudo escribir en stdOut:
 		{0}</string>
-  <string name="err_ghdlNotInstalled">El simulador de VHDL, GHDL, parece no estar instalado. Instale GHDL (http://ghdl.free.fr/) y pruebe de nuevo. Si todavía hay problemas, compruebe la ruta del ejecutable de GHDL en la configuración de Digital.</string>
-  <string name="err_iverilogNotInstalled">El simulador de Verilog, Icarus, parece no estar instalado. Instale Verilog (http://iverilog.icarus.com) y pruebe de nuevo. Si todavía hay problemas, compruebe la ruta del ejecutable de iVerilog en la configuración de Digital.</string>
+  <string name="err_ghdlNotInstalled">El simulador de VHDL, GHDL, parece no estar instalado. Instale GHDL (http://ghdl.free.fr/) y pruebe de nuevo. Si todavía hay problemas, compruebe la ruta del ejecutable de GHDL en la configuración de Digiblock.</string>
+  <string name="err_iverilogNotInstalled">El simulador de Verilog, Icarus, parece no estar instalado. Instale Verilog (http://iverilog.icarus.com) y pruebe de nuevo. Si todavía hay problemas, compruebe la ruta del ejecutable de iVerilog en la configuración de Digiblock.</string>
   <string name="err_errorAnalysingCircuit_N">Error analizando el circuito: {0}</string>
   <string name="err_romNeedsALabelToBeExported">¡Todas las ROM necesitan una etiqueta específica para ser exportadas!</string>
   <string name="err_lutNeedsALabelToBeExported">¡Todas las tablas de consulta (LUT) necesitan una etiqueta específica para ser exportadas!</string>
@@ -1373,7 +1373,7 @@
   <string name="menu_labelPins">Etiquetar entradas y salidas</string>
   <string name="menu_labelPins_tt">Fija una etiqueta a todas las entradas y salidas que no la tienen.</string>
   <string name="msg_errorOpeningDocumentation">¡Error al abrir un archivo PDF!</string>
-  <string name="message">&lt;h1&gt;Digital&lt;/h1&gt;Un sencillo simulador para circuitos digitales.
+  <string name="message">&lt;h1&gt;Digiblock&lt;/h1&gt;Un sencillo simulador para circuitos digiblockes.
         Escrito por H. Neemann entre 2016-2019.
 
         Los iconos se han tomado de &lt;a href="http://tango.freedesktop.org"&gt;Tango Desktop Project&lt;/a&gt;.

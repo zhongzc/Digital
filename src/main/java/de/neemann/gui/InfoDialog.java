@@ -5,7 +5,7 @@
  */
 package de.neemann.gui;
 
-import de.neemann.digital.lang.Lang;
+import de.neemann.digiblock.lang.Lang;
 
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
@@ -103,7 +103,7 @@ public final class InfoDialog implements Iterable<InfoDialog.Manifest> {
                 Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
                 if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
                     try {
-                        String name = Preferences.userRoot().node("dig").get("newname", "Digital");
+                        String name = Preferences.userRoot().node("dig").get("newname", "Digiblock");
                         URL url = hyperlinkEvent.getURL();
                         url = new URL(url.toString()
                                 .replace("[[version]]", revision)

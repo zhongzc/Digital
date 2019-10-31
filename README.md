@@ -1,34 +1,34 @@
-[![Build Status](https://travis-ci.org/hneemann/Digital.svg?branch=master)](https://travis-ci.org/hneemann/Digital)
-[![codecov](https://codecov.io/gh/hneemann/Digital/branch/master/graph/badge.svg)](https://codecov.io/gh/hneemann/Digital)
-[![Download](distribution/Download.svg)](https://github.com/hneemann/Digital/releases/latest/download/Digital.zip)
+[![Build Status](https://travis-ci.org/hneemann/Digiblock.svg?branch=master)](https://travis-ci.org/hneemann/Digiblock)
+[![codecov](https://codecov.io/gh/hneemann/Digiblock/branch/master/graph/badge.svg)](https://codecov.io/gh/hneemann/Digiblock)
+[![Download](distribution/Download.svg)](https://github.com/hneemann/Digiblock/releases/latest/download/Digiblock.zip)
 
-# Digital #
+# Digiblock #
 
-Digital is a easy-to-use digital logic designer and circuit simulator designed for educational purposes.
+Digiblock is a easy-to-use digiblock logic designer and circuit simulator designed for educational purposes.
 
 ![screnshot](distribution/screenshot.png)
 
 ![screnshot2](distribution/screenshot2.png)
 
-## [Download](https://github.com/hneemann/Digital/releases/latest/download/Digital.zip) and Installation ##
+## [Download](https://github.com/hneemann/Digiblock/releases/latest/download/Digiblock.zip) and Installation ##
 
-There is no installation required, just unpack the *Digital.zip* file, which is
-available for [download](https://github.com/hneemann/Digital/releases/latest/download/Digital.zip).
+There is no installation required, just unpack the *Digiblock.zip* file, which is
+available for [download](https://github.com/hneemann/Digiblock/releases/latest/download/Digiblock.zip).
 On Windows machines the EXE file can be executed, on Linux start the shell script
 and on MacOS the JAR file can be started directly.
 A [Java Runtime Environment](https://www.java.com/) (at least JRE 8) is required
-to run Digital.
+to run Digiblock.
 
-If there are any problems starting Digital on your system, please try to
-run Digital from a command line:
+If there are any problems starting Digiblock on your system, please try to
+run Digiblock from a command line:
 
 ```
-java -jar Digital.jar
+java -jar Digiblock.jar
 ```
 
 ## Features ##
 
-These are the main features of Digital:
+These are the main features of Digiblock:
 
 - Visualization of signal states with measurement graphs.
 - Single gate mode to analyze oscillations.
@@ -44,7 +44,7 @@ These are the main features of Digital:
 - Supports large circuits: The "Conway's Game of Life" example consists of about 2400 active components
   and works just fine.
 - It is possible to use custom components which are implemented in Java and packed in a jar file. 
-  See this [example](https://github.com/hneemann/digitalCustomComponents) for details.   
+  See this [example](https://github.com/hneemann/digiblockCustomComponents) for details.   
 - Simple remote TCP interface which e.g. allows an [assembler IDE](https://github.com/hneemann/Assembler) to control 
   the simulator.
 - Components can be described using VHDL or Verilog. The open source VHDL simulator [ghdl](http://ghdl.free.fr/)
@@ -61,7 +61,7 @@ These are the main features of Digital:
   but sufficient for beginners exercises, easy to understand and well documented. Also the
   [ATF150x](https://www.microchip.com/design-centers/programmable-logic/spld-cpld/cpld-atf15xx-family) chips are 
   supported which offer up to 128 macro-cells and in system programming.
-  See the [documentation](https://github.com/hneemann/Digital/releases/latest) for details.
+  See the [documentation](https://github.com/hneemann/Digiblock/releases/latest) for details.
 - SVG export of circuits, including a LaTeX/Inkscape compatible SVG version (see 
   [ctan](https://www.ctan.org/tex-archive/info/svg-inkscape))
 - No legacy code.
@@ -74,33 +74,33 @@ The latest changes that have not yet been released are listed in the
 
 ## Documentation ##
 
-The [documentation](https://github.com/hneemann/Digital/releases/latest) is available in English, German, Spanish and Portuguese.
-It is still very incomplete but it contains a chapter "First Steps" which explains the basic usage of Digital.
+The [documentation](https://github.com/hneemann/Digiblock/releases/latest) is available in English, German, Spanish and Portuguese.
+It is still very incomplete but it contains a chapter "First Steps" which explains the basic usage of Digiblock.
 The documentation also contains a list of available 74xx chips and a list of available keyboard shortcuts. 
 
 ## Translations ##
 
-So far Digital is available in English, German, Spanish and Portuguese. If someone wants to add a 
-new translation, please let me [know](mailto:digital-simulator@web.de).
+So far Digiblock is available in English, German, Spanish and Portuguese. If someone wants to add a 
+new translation, please let me [know](mailto:digiblock-simulator@web.de).
 I can provide you with a special file for translation. This file is much easier to 
-translate than the [files](https://github.com/hneemann/Digital/blob/master/src/main/resources/lang) 
-used directly by Digital. So you don't have to deal with GitHub or the 
+translate than the [files](https://github.com/hneemann/Digiblock/blob/master/src/main/resources/lang) 
+used directly by Digiblock. So you don't have to deal with GitHub or the 
 Java source code. Simply add the respective translation of the English 
-text to this file and send it back to [me](mailto:digital-simulator@web.de). 
+text to this file and send it back to [me](mailto:digiblock-simulator@web.de). 
 If you want to know how to create the necessary files yourself, see 
-[here](https://github.com/hneemann/Digital/blob/master/src/main/resources/lang/howTo.md). 
+[here](https://github.com/hneemann/Digiblock/blob/master/src/main/resources/lang/howTo.md). 
 
 ## Comments ##
 
 If you want to send a bug report or feature request please use the GitHub 
-[issue tracker](https://github.com/hneemann/Digital/issues/new). 
-This helps me to improve Digital, so do not hesitate.
+[issue tracker](https://github.com/hneemann/Digiblock/issues/new). 
+This helps me to improve Digiblock, so do not hesitate.
 
-It's also possible to send a private message to [digital-simulator@web.de](mailto:digital-simulator@web.de).
+It's also possible to send a private message to [digiblock-simulator@web.de](mailto:digiblock-simulator@web.de).
 
 ## Motivation ##
 
-Prior to the development of Digital, I used [Logisim](http://www.cburch.com/logisim/), developed by Carl Burch.
+Prior to the development of Digiblock, I used [Logisim](http://www.cburch.com/logisim/), developed by Carl Burch.
 If you are familiar with Logisim you will recognize the wire color scheme.
 
 Logisim is a excellent and proven tool for teaching purposes, that has been actively developed until 2011. 
@@ -123,7 +123,7 @@ But as far as I know, these projects do not work on solving the architectural di
 They are more about adding features and fixing bugs. In [Logisim-Evolution](https://github.com/reds-heig/logisim-evolution), 
 for example, a VHDL/Verilog export was added.
 
-So I also decided to implement a new simulator completely from scratch and started the implementation of Digital in march 2016.
+So I also decided to implement a new simulator completely from scratch and started the implementation of Digiblock in march 2016.
 In the meantime a development level has been reached which is comparable to Logisim.
 In some areas (performance, testing of circuits, circuit analysis, hardware support) Logisim has already been exceeded.
 
@@ -139,8 +139,8 @@ settling time to bring the circuit to a stable condition after its completion.
 A master-slave JK-flip-flop can only be implemented with a reset input, and this
 reset input needs to be activated to make the circuit operational.
 
-To understand how Digital deals with this issue, you have to look at how the simulation works in Digital:
-Digital uses an event based simulator approach, i.e. each time a 
+To understand how Digiblock deals with this issue, you have to look at how the simulation works in Digiblock:
+Digiblock uses an event based simulator approach, i.e. each time a 
 gate undergoes a change at one of its inputs, the new input states are read, however, 
 the outputs of the gate are not updated instantly. Only when all gates involved have read their inputs, 
 the outputs of all gates are updated. All gates seem to change synchronously, i.e.
@@ -170,7 +170,7 @@ a corresponding message is issued, but it is not possible to investigate the cau
 understand what happens.
 
 The synchronous update of all gates, which have seen a change at one of their inputs may also cause
-oscillations in Digital. In such a case, the oscillation is detected and simulation stops.
+oscillations in Digiblock. In such a case, the oscillation is detected and simulation stops.
 However, there is also a single gate mode which allows to propagate a signal change gate by gate. This feature allows to
 follow the way through the circuit. After each step, all gates with a change at one
 of their inputs are highlighted.
@@ -178,8 +178,8 @@ This way you can see how a signal change propagates in a circuit, thus you are a
 
 ### Embedded circuits ###
 
-Similar to Logisim, Digital also allows to embed previously saved circuits in new designs, so hierarchical
-circuits can be created. However, in Digital embedded circuits are included as often as 
+Similar to Logisim, Digiblock also allows to embed previously saved circuits in new designs, so hierarchical
+circuits can be created. However, in Digiblock embedded circuits are included as often as 
 the circuit is used. This is similar to a C program in which all 
 function calls are compiled as inlined functions. And this is also similar to a real circuit: 
 Each sub circuit is "physically present" as often as it is used in the design. 
@@ -206,7 +206,7 @@ in assembly language programs. So the debugging of assembly programs becomes ver
 ### Debugging ###
 
 In Logisim there is no easy way to debug an assembly program in a simulated processor.
-Digital offers a simple TCP-based remote control interface, so an [assembler IDE](https://github.com/hneemann/Assembler) 
+Digiblock offers a simple TCP-based remote control interface, so an [assembler IDE](https://github.com/hneemann/Assembler) 
 can be used to control the simulator and load assembly programs into the simulated processor, start the program, perform 
 single steps and so on. If a "single step" or a "run to next BRK instruction" is triggered by the assembly IDE, the
 actual used address of the program memory is returned to the assembler IDE. 
@@ -215,7 +215,7 @@ assembly program executed by a simulated processor.
 
 ### Circuit Synthesis ###
 
-Logisim is able to generate combinatorial circuits from a truth table and vice versa. In Digital, this is also possible.
+Logisim is able to generate combinatorial circuits from a truth table and vice versa. In Digiblock, this is also possible.
 In addition, also a sequential circuit can be generated from an appropriate state transition table.
 You can specify both the transition circuit and the output circuit. The minimization of the expressions is done
 by the method of Quine and McCluskey.
@@ -229,7 +229,7 @@ After you have created the truth table or state transition table you can create 
 After that you can simply flash this file to the appropriate GAL and test the circuit on a bred board.
 As mentioned above these GALs are quite old but with 8/10 macro-cells sufficient for beginners exercises.
 If more macro-cells are required, see the PDF documentation that is included in the distribution for details 
-on how to set up Digital to support the [ATF1502](http://www.microchip.com/wwwproducts/en/ATF1502AS) and
+on how to set up Digiblock to support the [ATF1502](http://www.microchip.com/wwwproducts/en/ATF1502AS) and
 [ATF1504](http://www.microchip.com/wwwproducts/en/ATF1504AS) which offer 32/64 macro-cells and In System Programming.
 It is also possible to export a circuit to VHDL or Verilog to run it on an FPGA.
 But the HDL synthesis is a bit time-consuming and in my opinion slows down the workflow in a
@@ -237,12 +237,12 @@ lab exercise too much, especially if only very simple circuits are used.
 
 ## How do I get set up? ##
 
-If you want to build Digital from the source code:
+If you want to build Digiblock from the source code:
  
 * At first clone the repository.
 * A JDK (at least JDK 8) is required (either the Oracle JDK or OpenJDK)
 * maven is used as build system, so the easiest way is to install [maven](https://maven.apache.org/).
-* After that you can simply run `mvn install` to build Digital.
+* After that you can simply run `mvn install` to build Digiblock.
 * Run `mvn site` to create a findbugs and a JaCoCo code coverage report.
 * Most IDEs (Eclipse, NetBeans, IntelliJ) are able to import the `pom.xml` to create a project.
 

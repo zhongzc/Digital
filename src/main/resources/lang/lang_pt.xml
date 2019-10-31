@@ -51,7 +51,7 @@
   <string name="btn_loadSvg_tt">Importar arquivo SVG. Para criar arquivo SVG adequado, é mais fácil criar o modelo SVG primeiro, e depois editá-lo.</string>
   <string name="msg_warning">Aviso</string>
   <string name="cancel">Cancelar</string>
-  <string name="digital">Digital</string>
+  <string name="digiblock">Digiblock</string>
   <string name="expression">Expressão</string>
   <string name="elem_Help_inputs">Entradas</string>
   <string name="elem_Help_outputs">Saídas</string>
@@ -877,8 +877,8 @@
   <string name="err_ifExternalComponentIsUsedTwiceCodeMustBeIdentical_N">Se um componente externo for usado várias vezes, o código deverá ser o mesmo! Efeitos: {0}</string>
   <string name="err_writingToStdOut_O">Não foi possível escrever na saída padrão:
         {0}</string>
-  <string name="err_ghdlNotInstalled">O simulador de VHDL (ghdl) parece não estar instalado. Recomendável instalar ghdl (http://ghdl.free.fr/) e tentar de novo. Se ainda houver problemas, conferir os caminhos para os executáveis do ghdl nas configuraçãoes do Digital.</string>
-  <string name="err_iverilogNotInstalled">O simulador Icarus Verilog parece não estar instalado. Recomendável instalar o iverilog (http://iverilog.icarus.com/) e tentar de novo. Se ainda houver problemas, conferir os caminhos para os executáveis do iverilog nas configurações do Digital.</string>
+  <string name="err_ghdlNotInstalled">O simulador de VHDL (ghdl) parece não estar instalado. Recomendável instalar ghdl (http://ghdl.free.fr/) e tentar de novo. Se ainda houver problemas, conferir os caminhos para os executáveis do ghdl nas configuraçãoes do Digiblock.</string>
+  <string name="err_iverilogNotInstalled">O simulador Icarus Verilog parece não estar instalado. Recomendável instalar o iverilog (http://iverilog.icarus.com/) e tentar de novo. Se ainda houver problemas, conferir os caminhos para os executáveis do iverilog nas configurações do Digiblock.</string>
   <string name="err_errorAnalysingCircuit_N">Erro ao analisar o circuito: {0}</string>
   <string name="err_romNeedsALabelToBeExported">Toda ROM necessita um rótulo único para ser exportada!</string>
   <string name="err_lutNeedsALabelToBeExported">Toda LUT necessita um rótulo único para ser exportada!</string>
@@ -1441,7 +1441,7 @@
         O arquivo ZIP conterá todos os arquivos que forem necessários para a operação do circuito.</string>
   <string name="menu_labelPins">Rotular entradas e saídas</string>
   <string name="menu_labelPins_tt">Definir rótulo para entradas e saídas que não tiverem algum.</string>
-  <string name="message">&lt;h1&gt;Digital&lt;/h1&gt;Um simulator simples para circuitos digitais.
+  <string name="message">&lt;h1&gt;Digiblock&lt;/h1&gt;Um simulator simples para circuitos digitais.
         Elaborado por H. Neemann em 2016-2018.
 
         Os ícones foram tomados de &lt;a href="http://tango.freedesktop.org"&gt;Tango Desktop Project&lt;/a&gt;.

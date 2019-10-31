@@ -5709,7 +5709,7 @@ fd,fd,fe,fe,ff,ff,100,100,101,101,102,102,103,103,104,104,105,105,106,106,107,10
         </entry>
         <entry>
           <string>lastDataFile</string>
-          <string>/home/hneemann/Dokumente/DHBW/Technische_Informatik_I/Vorlesung/05_Schaltkreistechnik/Digital/square.hex</string>
+          <string>/home/hneemann/Dokumente/DHBW/Technische_Informatik_I/Vorlesung/05_Schaltkreistechnik/Digiblock/square.hex</string>
         </entry>
       </elementAttributes>
       <pos x="540" y="40"/>
@@ -11361,7 +11361,7 @@ fc,fc,fd,fd,fe,fe,ff,ff,100,100,101,101,102,102,103,103,104,104,105,105,106,106,
         </entry>
         <entry>
           <string>lastDataFile</string>
-          <string>/home/hneemann/Dokumente/DHBW/Technische_Informatik_I/Vorlesung/05_Schaltkreistechnik/Digital/squareSign.hex</string>
+          <string>/home/hneemann/Dokumente/DHBW/Technische_Informatik_I/Vorlesung/05_Schaltkreistechnik/Digiblock/squareSign.hex</string>
         </entry>
       </elementAttributes>
       <pos x="540" y="180"/>

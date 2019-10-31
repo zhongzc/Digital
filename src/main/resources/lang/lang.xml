@@ -2,7 +2,7 @@
 <!--
 To add a new language, you can add the language to this file.
 Use the name of the language in that language.
-Then run the test case "de.neemann.digital.lang.TestLang.testAdditionalLanguages".
+Then run the test case "de.neemann.digiblock.lang.TestLang.testAdditionalLanguages".
 
 In the target directory you can now find a diff file for the
 new language. This diff file contains a list of English text
@@ -10,7 +10,7 @@ fragments and a empty xml tag for the translated text fragment.
 Fill all the empty language tags.
 
 To import the translated text, start the class
-"de.neemann.digital.lang.LanguageUpdater" and select
+"de.neemann.digiblock.lang.LanguageUpdater" and select
 your diff file.
 
 In the future, each time the software is built, a new

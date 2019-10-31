@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
-    <chapter heading="Digital">
+    <chapter heading="Digiblock">
         <subchapter heading="Introdução">
             <par>
-                Digital é um simulador simples usado para testar circuitos digitais. As portas lógicas são conectadas
+                Digiblock é um simulador simples usado para testar circuitos digitais. As portas lógicas são conectadas
                 umas às outras por fios e o comportamento de todo o circuito pode ser simulado.
                 O usuário pode interagir com a simulação ou pressionando botões, ou definindo
                 valores para as entradas do circuito.
             </par>
             <par>
-                Dessa forma, a maioria dos circuitos básicos usados em eletrônica digital pode ser construída e simulada.
+                Dessa forma, a maioria dos circuitos básicos usados em eletrônica digiblock pode ser construída e simulada.
                 Na pasta <e>examples</e>, os usuários encontrarão exemplos que incluem até um processador Harvard de 16-bits
                 de ciclo único completamente funcional.
             </par>

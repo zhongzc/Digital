@@ -12,7 +12,7 @@ module DIG_DCM_SP #(
     input cin,
     output cout
 );
-    // DCM_SP: Digital Clock Manager
+    // DCM_SP: Digiblock Clock Manager
     // Spartan-6
     // Xilinx HDL Libraries Guide, version 14.1
 
@@ -42,7 +42,7 @@ module DIG_DCM_SP #(
         .CLK2X180(), // 1-bit output: 2X clock frequency, 180 degree clock output
         .CLK90(), // 1-bit output: 90 degree clock output
         .CLKDV(), // 1-bit output: Divided clock output
-        .CLKFX(cout), // 1-bit output: Digital Frequency Synthesizer output (DFS)
+        .CLKFX(cout), // 1-bit output: Digiblock Frequency Synthesizer output (DFS)
         .CLKFX180(), // 1-bit output: 180 degree CLKFX output
         .LOCKED(), // 1-bit output: DCM_SP Lock Output
         .PSDONE(), // 1-bit output: Phase shift done output

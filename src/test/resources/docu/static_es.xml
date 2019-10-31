@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
-    <chapter heading="Digital">
+    <chapter heading="Digiblock">
         <subchapter heading="Introducción">
             <par>
-                Digital es un simulador sencillo usado para simular circuitos digitales.
+                Digiblock es un simulador sencillo usado para simular circuitos digiblockes.
 				Las puertas lógicas se conectan entre sí con cables, y se puede simular el comportamiento global del circuito.
 				El usuario puede interactuar con la simulación presionando botones o fijando valores a las entradas del circuito.
             </par>
             <par>
-                Se pueden construir y simular la mayoría de los circuitos empleados en electrónica digital.
+                Se pueden construir y simular la mayoría de los circuitos empleados en electrónica digiblock.
 				En la carpeta <e>ejemplos</e>, el usuario puede navegar entre ejemplos que incluyen un procesador Harvard
 				de 16 bits de ciclo sencillo.
             </par>
@@ -267,24 +267,24 @@
                 disponible en el sitio web de ATMEL/Microchip, se necesita para programar los chips.
             </par>
             <par>
-                Por desgracia, los detalles del 'fuse map' no son públicos, así que no hay ningún adaptador para este chip que pueda integrarse en Digital, como sí se puede con los chips <e>GAL16v8</e> y <e>GAL22v10</e>.
+                Por desgracia, los detalles del 'fuse map' no son públicos, así que no hay ningún adaptador para este chip que pueda integrarse en Digiblock, como sí se puede con los chips <e>GAL16v8</e> y <e>GAL22v10</e>.
             </par>
             <par>
                 Por tanto, los adaptadores <e>fit150[x].exe</e> que proporciona ATMEL deben usarse. Estos programas crean un archivo <e>JEDEC</e> a partir de un adecuado archivo <e>TT2</e> que puede programarse en el chip.
-				Digital comienza el adaptador automáticamente cada vez que se crea un archivo <e>TT2</e>. Para ello, la ruta a los adaptadores <e>fit150[n].exe</e> debe especificarse en los ajustes. El archivo <e>JEDEC</e> puede entonces ser abierto y programado directamente con
+				Digiblock comienza el adaptador automáticamente cada vez que se crea un archivo <e>TT2</e>. Para ello, la ruta a los adaptadores <e>fit150[n].exe</e> debe especificarse en los ajustes. El archivo <e>JEDEC</e> puede entonces ser abierto y programado directamente con
 				<a href="https://www.microchip.com/design-centers/programmable-logic/spld-cpld/tools/software/atmisp">
                     <e>ATMISP</e>
                 </a>.
             </par>
             <par>
-                Por cuestiones legales, el adaptador <e>fit1502.exe</e> no se puede distribuir con Digital. Sin embargo, se puede encontrar en la carpeta <e>WinCupl\Fitters</e> después de instalar 
+                Por cuestiones legales, el adaptador <e>fit1502.exe</e> no se puede distribuir con Digiblock. Sin embargo, se puede encontrar en la carpeta <e>WinCupl\Fitters</e> después de instalar 
                 <a href="https://www.microchip.com/design-centers/programmable-logic/spld-cpld/tools/software/wincupl">
                     <e>WinCupl</e>
                 </a>.
                 <a href="https://www.microchip.com/design-centers/programmable-logic/spld-cpld/tools/software/wincupl">
                     <e>WinCupl</e>
                 </a>
-                está disponible en el sitio web de ATMEL/Microchip. En sistemas Linux, los adaptadores pueden ser ejecutados por Digital si <e>Wine</e> está instalado.
+                está disponible en el sitio web de ATMEL/Microchip. En sistemas Linux, los adaptadores pueden ser ejecutados por Digiblock si <e>Wine</e> está instalado.
             </par>
         </subchapter>
         <subchapter heading="Exportación a VHDL o Verilog">
@@ -326,13 +326,13 @@
     </chapter>
     <chapter heading="Formas personalizadas">
         <par>
-            Aunque Digital tiene algunas opciones que determinan el aspecto de un circuito cuando se incrusta en otro, en algunos casos puede ser útil usar una forma especial para un subcircuito.
+            Aunque Digiblock tiene algunas opciones que determinan el aspecto de un circuito cuando se incrusta en otro, en algunos casos puede ser útil usar una forma especial para un subcircuito.
 			Un ejemplo es la representación de la ALU en el procesador incluido en los ejemplos. Este capítulo explica cómo crear una forma especial para un circuito.
         </par>
         <par>
-            Digital no tiene un editor para crear una forma especial.
+            Digiblock no tiene un editor para crear una forma especial.
 			En su lugar, hay que dar un pequeño rodeo. Primero, el circuito al que se le va a representar por una forma especial deberá estar abierto. Después, se generará una plantilla SGV para él. En esta plantilla, el circuito se representará por un sencillo rectángulo. También contendrá todos los pines del circuito, representados con círculos azules (entradas) y rojos (salidas). Para ver qué círculo pertenece a cada pin, puedes mirar en el ID del círculo en las propiedades del objeto. Este ID tiene la forma <e>pin:[nombre]</e> o <e>pin+:[nombre]</e>.
-			En el último caso, el pin tendrá una etiqueta si se reimporta a Digital. Si no quieres esa etiqueta, el <e>+</e> puede eliminarse.
+			En el último caso, el pin tendrá una etiqueta si se reimporta a Digiblock. Si no quieres esa etiqueta, el <e>+</e> puede eliminarse.
         </par>
         <par>
             Este archivo SVG puede ahora editarse. El programa más adecuado es <a href="https://inkscape.org/en/">Inkscape</a>, que es open source y disponible gratis.
@@ -342,12 +342,12 @@
             Si se van a usar archivos SVG que ya existen, es más fácil abrir la plantilla que se creó y pegar el gráfico existente a la plantilla a través de Copiar&amp;Pegar.
         </par>
         <par>
-            Si el archivo se había guardado, puede ser importado con Digital. Se lee el archivo y toda la información necesaria se extrae y se almacena en el circuito. Para usar el circuito más adelante, ya no se requiere el archivo SVG.
+            Si el archivo se había guardado, puede ser importado con Digiblock. Se lee el archivo y toda la información necesaria se extrae y se almacena en el circuito. Para usar el circuito más adelante, ya no se requiere el archivo SVG.
         </par>
         <par>
             Un detalle final: SVR es un formato de archivo muy potente y flexible.
 			Puede usarse para describir gráficos extremadamente complejos.
-			El importador de Digital no puede importar todos los archivos SVG sin errores. Si un archivo no puede ser importado, o no tiene el aspecto deseado, habrá que seguir haciendo pruebas hasta conseguir el resultado deseado.
+			El importador de Digiblock no puede importar todos los archivos SVG sin errores. Si un archivo no puede ser importado, o no tiene el aspecto deseado, habrá que seguir haciendo pruebas hasta conseguir el resultado deseado.
         </par>
     </chapter>
     <chapter heading="Preguntas habituales(FAQ)">
@@ -394,7 +394,7 @@
         <faq>
             <question>He introducido una tabla de verdad, pero hay más de una expresión booleana. ¿Cuál es la correcta?
             </question>
-            <answer>Al minimizar una expresión booleana pueden resultar varias expresiones que describen la misma función. Digital las muestra todas si vienen de la misma tabla. Puede haber diferencias dependiente de las condiciones "indiferentes" de la tabla de verdad.
+            <answer>Al minimizar una expresión booleana pueden resultar varias expresiones que describen la misma función. Digiblock las muestra todas si vienen de la misma tabla. Puede haber diferencias dependiente de las condiciones "indiferentes" de la tabla de verdad.
             </answer>
         </faq>
         <faq>

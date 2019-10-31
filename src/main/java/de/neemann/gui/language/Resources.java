@@ -12,7 +12,7 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
-import de.neemann.digital.XStreamValid;
+import de.neemann.digiblock.XStreamValid;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

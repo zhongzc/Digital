@@ -5,8 +5,8 @@
  */
 package de.neemann.gui;
 
-import de.neemann.digital.core.ExceptionWithOrigin;
-import de.neemann.digital.lang.Lang;
+import de.neemann.digiblock.core.ExceptionWithOrigin;
+import de.neemann.digiblock.lang.Lang;
 
 import javax.swing.*;
 import java.awt.*;

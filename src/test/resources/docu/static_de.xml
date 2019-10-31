@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <root>
-    <chapter heading="Digital">
+    <chapter heading="Digiblock">
         <subchapter heading="Einführung">
             <par>
-                Digital ist ein Simulator für digitale Schaltkreise. Ein Schaltung besteht dabei aus einer
+                Digiblock ist ein Simulator für digiblocke Schaltkreise. Ein Schaltung besteht dabei aus einer
                 Anzahl logischer Gatter, welche miteinander durch Leitungen verbunden sind.
                 Das Verhalten der Gesamtschaltung kann simuliert werden.
                 Der Anwender kann mit der laufenden Simulation über bestimmte Elemente interagieren, indem er z.B.
                 Knöpfe betätigt oder Eingangswerte setzt.
             </par>
             <par>
-                Auf diese Weise können die meisten Grundschaltungen der Digitaltechnik aufgebaut werden. Im Ordner
+                Auf diese Weise können die meisten Grundschaltungen der Digiblocktechnik aufgebaut werden. Im Ordner
                 <e>examples</e>
                 finden sich viele Beispiele bis hin zum funktionsfähigen 16-Bit Single Cycle Harvard Prozessor.
             </par>
@@ -338,7 +338,7 @@
             </par>
             <par>
                 Leider sind die Details der Fuse-Map nicht öffentlich zugänglich, so dass kein geeigneter Fitter für
-                diesen Baustein in Digital integriert werden kann, wie das bei den <e>GAL16v8</e> und
+                diesen Baustein in Digiblock integriert werden kann, wie das bei den <e>GAL16v8</e> und
                 <e>GAL22v10</e>
                 Bausteinen möglich ist.
             </par>
@@ -346,8 +346,8 @@
                 Daher muss auf einen der von ATMEL bereitgestellten Fitter <e>fit150[x].exe</e> zurückgegriffen werden.
                 Diese Programme erzeugen aus einer geeigneten <e>TT2</e> Datei eine <e>JEDEC</e>-Datei, welche dann
                 in den entsprechenden Chip übertragen werden kann.
-                Digital startet den Fitter automatisch, wenn eine <e>TT2</e> Datei erzeugt wird. Dazu muss in den
-                Digital-Einstellungen der Pfad zu den <e>fit150[x].exe</e> Dateien angegeben werden.
+                Digiblock startet den Fitter automatisch, wenn eine <e>TT2</e> Datei erzeugt wird. Dazu muss in den
+                Digiblock-Einstellungen der Pfad zu den <e>fit150[x].exe</e> Dateien angegeben werden.
                 Es wird zudem eine Projektdatei <e>*.chn</e> erzeugt, welche dann direkt mit
                 <a href="https://www.microchip.com/design-centers/programmable-logic/spld-cpld/tools/software/atmisp">
                     <e>ATMISP</e>
@@ -355,7 +355,7 @@
                 geöffnet werden kann, um die <e>JEDEC</e>-Datei zu brennen.
             </par>
             <par>
-                Aus rechtlichen Gründen können die Fitter <e>fit150[n].exe</e> nicht mit Digital ausgeliefert werden.
+                Aus rechtlichen Gründen können die Fitter <e>fit150[n].exe</e> nicht mit Digiblock ausgeliefert werden.
                 Diese finden sich jedoch nach der Installation von
                 <a href="https://www.microchip.com/design-centers/programmable-logic/spld-cpld/tools/software/wincupl">
                     <e>WinCupl</e>
@@ -365,7 +365,7 @@
                     <e>WinCupl</e>
                 </a>
                 wiederum ist auf der ATMEL/Microchip Webseite verfügbar.
-                Unter Linux lassen sich die Fitter ebenfalls von Digital starten, wenn <e>wine</e> installiert
+                Unter Linux lassen sich die Fitter ebenfalls von Digiblock starten, wenn <e>wine</e> installiert
                 ist.
             </par>
         </subchapter>
@@ -420,14 +420,14 @@
     </chapter>
     <chapter heading="Benutzerdefinierter Schaltungssymbole">
         <par>
-            Digital bietet zwar einige Optionen, die die Erscheinungsform einer Schaltung festlegen, wenn diese
+            Digiblock bietet zwar einige Optionen, die die Erscheinungsform einer Schaltung festlegen, wenn diese
             in eine andere eingebettet wird, in manchen Fällen kann es jedoch sinnvoll sein, ein spezielles
             eigenes Symbol für eine Teilschaltung zu verwenden.
             Ein Beispiel ist die Darstellung der ALU in dem Prozessor, welcher in den Beispielen enthalten ist.
             In diesem Kapitel wird beschrieben, wie eine solches spezielles Symbol für eine Schaltung definiert wird.
         </par>
         <par>
-            Digital bietet keinen Editor für das Erstellen eines speziellen Symbols an. Statt dessen ist ein kleiner
+            Digiblock bietet keinen Editor für das Erstellen eines speziellen Symbols an. Statt dessen ist ein kleiner
             Umweg für das Erstellen von Schaltungssymbolen erforderlich:
             Zunächst wird die Schaltung geöffnet, welche durch ein spezielles Symbol repräsentiert werden soll.
             Dann wird für diese Schaltung ein SVG-Template erstellt. In diesem Template wird die Schaltung durch
@@ -435,7 +435,7 @@
             repräsentiert durch blaue (Eingänge) und rote (Ausgänge) Kreise.
             Um zu sehen, welcher Kreis zu welchem Pin gehört, kann man sich in den Objekteigenschaften die ID des
             Kreises ansehen. Diese ID hat die Form <e>pin:[Name]</e> oder <e>pin+:[Name]</e>. Bei der letzteren
-            Variante wird der Pin beim Reimport zu Digital mit einem Label versehen. Wünscht man kein solches Label,
+            Variante wird der Pin beim Reimport zu Digiblock mit einem Label versehen. Wünscht man kein solches Label,
             kann das <e>+</e> entfernt werden.
         </par>
         <par>
@@ -449,13 +449,13 @@
             Template zu öffnen, und die bereits vorhandene Grafik per Copy&amp;Paste in das Template einzufügen.
         </par>
         <par>
-            Wenn die Datei gespeichert wurde, kann diese mit Digital importiert werden. Dabei wird die Datei
+            Wenn die Datei gespeichert wurde, kann diese mit Digiblock importiert werden. Dabei wird die Datei
             eingelesen und alle notwendigen Informationen werden extrahiert und in der Schaltung gespeichert.
             Für die weitere Verwendung der Schaltung ist die SVG-Datei also nicht mehr erforderlich.
         </par>
         <par>
             Noch eine Anmerkung: SVG ist ein sehr mächtiges und flexibles Dateiformat. Es können extrem
-            komplexe Grafiken damit beschrieben werden. Der in Digital integrierte Importer ist nicht in der
+            komplexe Grafiken damit beschrieben werden. Der in Digiblock integrierte Importer ist nicht in der
             Lage alle denkbaren SVG-Dateien fehlerfrei zu importieren. Wenn eine Datei nicht importiert werden kann,
             oder nicht so erscheint wie erwartet, ist evtl. einiges Experimentieren erforderlich, bevor das
             gewünschte Ergebnis erreicht ist.
@@ -569,7 +569,7 @@
             </question>
             <answer>Wenn eine Schaltfunktion minimiert wird, kann es mehrere minimierte Schaltfunktionen gleicher
                 Komplexität geben (gleiche Anzahl von Termen).
-                Digital zeigt alle möglichen Lösungen an und alle liefern die selbe Wahrheitstabelle.
+                Digiblock zeigt alle möglichen Lösungen an und alle liefern die selbe Wahrheitstabelle.
                 In den Don't Care-Zeilen der Wahrheitstabelle kann es natürlich Unterschiede zwischen den verschiedenen
                 Funktionen geben.
             </answer>

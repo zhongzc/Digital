@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Digital by H.Neemann -->
+<!-- Created with Digiblock by H.Neemann -->
 
 <!-- created: Mon Feb 05 18:25:59 CET 2018 -->
 
@@ -18,7 +18,7 @@
    version="1.1"
    id="svg609"
    sodipodi:docname="splash.svg"
-   inkscape:export-filename="/home/hneemann/Dokumente/Java/digital/src/main/resources/icons/splash.png"
+   inkscape:export-filename="/home/hneemann/Dokumente/Java/digiblock/src/main/resources/icons/splash.png"
    inkscape:export-xdpi="126.17983"
    inkscape:export-ydpi="126.17983"
    inkscape:version="0.92.1 r15371">
@@ -92,7 +92,7 @@
      height="429.76385"
      x="36"
      y="-62"
-     inkscape:export-filename="/home/hneemann/Dokumente/Java/digital/src/main/resources/icons/splash.png"
+     inkscape:export-filename="/home/hneemann/Dokumente/Java/digiblock/src/main/resources/icons/splash.png"
      inkscape:export-xdpi="126"
      inkscape:export-ydpi="126" />
   <g
@@ -103,7 +103,7 @@
        x="60"
        y="-15"
        style="font-size:60px;text-anchor:start;fill:#000000"
-       id="text595">Digital</text>
+       id="text595">Digiblock</text>
   </g>
   <text
      x="66.895401"

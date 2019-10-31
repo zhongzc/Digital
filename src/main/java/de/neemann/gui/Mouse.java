@@ -5,8 +5,8 @@
  */
 package de.neemann.gui;
 
-import de.neemann.digital.core.element.Keys;
-import de.neemann.digital.gui.Settings;
+import de.neemann.digiblock.core.element.Keys;
+import de.neemann.digiblock.gui.Settings;
 
 import java.awt.event.MouseEvent;
 

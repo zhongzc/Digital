@@ -30,8 +30,8 @@
 				<fo:static-content flow-name="footer">
                     <fo:block text-align-last="justify" border-top-style="solid">
     					<fo:inline text-align="left" font-size="8pt">
-                            <fo:basic-link external-destination="https://github.com/hneemann/Digital" show-destination="new">
-                                https://github.com/hneemann/Digital
+                            <fo:basic-link external-destination="https://github.com/hneemann/Digiblock" show-destination="new">
+                                https://github.com/hneemann/Digiblock
                             </fo:basic-link>
 		    			</fo:inline>
                         <fo:leader/>
