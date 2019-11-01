@@ -124,7 +124,7 @@ public class Gal16V8JEDECExporterTest extends TestCase {
                 "L2144 11111111111111111111111111111111*\r\n" +
                 "L2176 111111111111111101*\r\n" +
                 "C5723*\r\n" +
-                "\u0003CE43", baos.toString());
+                "\u0003CF0D", baos.toString());
 
     }
 
@@ -179,7 +179,7 @@ public class Gal16V8JEDECExporterTest extends TestCase {
                 "L2144 11111111111111111111111111111111*\r\n" +
                 "L2176 111111111111111110*\r\n" +
                 "C244C*\r\n" +
-                "\u00035E24", baos.toString());
+                "\u00035EEE", baos.toString());
 
     }
 
@@ -238,7 +238,7 @@ public class Gal16V8JEDECExporterTest extends TestCase {
                 "L2144 11111111111111111111111111111111*\r\n" +
                 "L2176 111111111111111110*\r\n" +
                 "C2465*\r\n" +
-                "\u00035D7E", baos.toString());
+                "\u00035E48", baos.toString());
 
     }
 

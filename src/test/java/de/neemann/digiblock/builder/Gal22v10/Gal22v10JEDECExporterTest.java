@@ -143,7 +143,7 @@ public class Gal22v10JEDECExporterTest extends TestCase {
                 "L5824 10100011000000110000001000000000*\r\n" +
                 */
                 "C8241*\r\n" +
-                "\u000353C9", baos.toString());
+                "\u00035493", baos.toString());
 
     }
 
@@ -178,7 +178,7 @@ public class Gal22v10JEDECExporterTest extends TestCase {
                 "L5792 00000000000000001100000000000000*\r\n" +
                 //"L5824 00000011000000110000001000000000*\r\n" +  // CUPL writes data to the signature bytes, don't know why
                 "C0AE3*\r\n" +
-                "\u00033205", baos.toString());
+                "\u000332CF", baos.toString());
 
     }
 
