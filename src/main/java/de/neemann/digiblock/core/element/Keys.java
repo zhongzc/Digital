@@ -666,7 +666,7 @@ public final class Keys {
      * A jar containing custom java components
      */
     public static final Key<File> SETTINGS_JAR_PATH
-            = new Key.KeyFile("jarPath", new File("")).setSecondary().setRequiresRestart();
+            = new Key.KeyFile("jarPath", new File("")).setDirectoryOnly(true).setSecondary().setRequiresRestart();
 
     /**
      * The manager which contains all the roms data

@@ -35,7 +35,7 @@ public class JarComponentManagerTest extends TestCase {
         ToBreakRunner br = new ToBreakRunner("dig/jarLib/jarLibTest.dig") {
             @Override
             public void initLibrary(ElementLibrary library) {
-                library.addExternalJarComponents(new File(Resources.getRoot(), "dig/jarLib/pluginExample-1.0-SNAPSHOT.jar"));
+                library.addExternalJarComponents(new File(Resources.getRoot(), "dig/jarLib"));
                 assertNull(library.checkForException());
             }
         };

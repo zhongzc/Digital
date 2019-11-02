@@ -5,8 +5,8 @@
  */
 package de.neemann.digiblock.draw.library;
 
-import de.neemann.digiblock.core.arithmetic.*;
 import de.neemann.digiblock.core.arithmetic.Comparator;
+import de.neemann.digiblock.core.arithmetic.*;
 import de.neemann.digiblock.core.basic.*;
 import de.neemann.digiblock.core.element.ElementAttributes;
 import de.neemann.digiblock.core.element.ElementTypeDescription;
@@ -41,7 +41,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * The ElementLibrary is responsible for storing all the components which can be used in a circuit.
@@ -106,9 +109,9 @@ public class ElementLibrary implements Iterable<ElementLibrary.ElementContainer>
     /**
      * Creates a new instance.
      *
-     * @param jarFile the jar file to load
+     * @param jarPath the jar path to load
      */
-    public ElementLibrary(File jarFile) {
+    public ElementLibrary(File jarPath) {
         root = new LibraryNode(Lang.get("menu_elements"))
                 .setLibrary(this)
                 .add(new LibraryNode(Lang.get("lib_Logic"))
@@ -220,7 +223,7 @@ public class ElementLibrary implements Iterable<ElementLibrary.ElementContainer>
                         .add(AsyncSeq.DESCRIPTION)
                         .add(External.DESCRIPTION));
 
-        addExternalJarComponents(jarFile);
+        addExternalJarComponents(jarPath);
 
         custom = new ElementLibraryFolder(root, Lang.get("menu_custom"));
 
@@ -242,10 +245,18 @@ public class ElementLibrary implements Iterable<ElementLibrary.ElementContainer>
         if (file != null && file.getPath().length() > 0 && file.exists()) {
             if (jarComponentManager == null)
                 jarComponentManager = new JarComponentManager(this);
-            try {
-                jarComponentManager.loadJar(file);
-            } catch (IOException | InvalidNodeException e) {
-                exception = e;
+            try (Stream<Path> paths = Files.walk(file.toPath())) {
+                paths.forEach(p -> {
+                    if (p.toString().endsWith(".jar")) {
+                        try {
+                            jarComponentManager.loadJar(p.toFile());
+                        } catch (IOException | InvalidNodeException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
