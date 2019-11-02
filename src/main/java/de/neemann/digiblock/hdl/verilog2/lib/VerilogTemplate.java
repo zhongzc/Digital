@@ -5,12 +5,7 @@
  */
 package de.neemann.digiblock.hdl.verilog2.lib;
 
-import de.neemann.digiblock.hdl.hgs.Context;
-import de.neemann.digiblock.hdl.hgs.HGSEvalException;
-import de.neemann.digiblock.hdl.hgs.Parser;
-import de.neemann.digiblock.hdl.hgs.ParserException;
-import de.neemann.digiblock.hdl.hgs.Statement;
-import de.neemann.digiblock.hdl.hgs.Value;
+import de.neemann.digiblock.hdl.hgs.*;
 import de.neemann.digiblock.hdl.model2.HDLException;
 import de.neemann.digiblock.hdl.model2.HDLNode;
 import de.neemann.digiblock.hdl.printer.CodePrinter;
@@ -18,11 +13,10 @@ import de.neemann.digiblock.hdl.vhdl2.Separator;
 import de.neemann.digiblock.lang.Lang;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.jar.JarFile;
 
 /**
  * @author ideras
@@ -39,16 +33,17 @@ public class VerilogTemplate implements VerilogElement {
      * Creates a new instance
      *
      * @param elementName the element name
+     * @param externalJarFiles the external jar files
      * @throws IOException  IOException
      * @throws HDLException HDLException
      */
-    public VerilogTemplate(String elementName) throws IOException, HDLException {
+    public VerilogTemplate(String elementName, ArrayList<JarFile> externalJarFiles) throws IOException, HDLException {
         super();
         this.moduleBaseName = MODULE_PREFIX + elementName;
         modules = new HashMap<>();
 
         try {
-            statements = parseFile(moduleBaseName);
+            statements = Parser.createFromJar(createFileName(moduleBaseName), externalJarFiles);
         } catch (ParserException ex) {
             throw new HDLException(ex.getMessage());
         }
@@ -56,24 +51,6 @@ public class VerilogTemplate implements VerilogElement {
         if (statements == null) {
             throw new HDLException("Invalid verilog template file. Template is empty.");
         }
-    }
-
-    private Statement parseFile(String moduleName) throws IOException, ParserException {
-        Statement stmt;
-        String fileName = createFileName(moduleName);
-
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(fileName);
-        if (inputStream == null) {
-            throw new IOException("file not present: " + fileName);
-        }
-
-        try (InputStreamReader in = new InputStreamReader(inputStream)) {
-            Parser parser = new Parser(in, fileName);
-
-            stmt = parser.parse();
-        }
-
-        return stmt;
     }
 
     private static String createFileName(String name) {

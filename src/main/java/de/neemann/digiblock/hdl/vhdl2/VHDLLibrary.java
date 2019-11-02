@@ -5,6 +5,7 @@
  */
 package de.neemann.digiblock.hdl.vhdl2;
 
+import de.neemann.digiblock.draw.library.JarComponentManager;
 import de.neemann.digiblock.hdl.model2.HDLException;
 import de.neemann.digiblock.hdl.model2.HDLNode;
 import de.neemann.digiblock.hdl.vhdl2.entities.VHDLEntity;
@@ -14,7 +15,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.jar.JarFile;
 
 /**
  * The template library.
@@ -22,13 +25,19 @@ import java.util.HashMap;
  */
 public class VHDLLibrary {
     private static final Logger LOGGER = LoggerFactory.getLogger(VHDLLibrary.class);
+    private final ArrayList<JarFile> externalJarFiles;
 
     private HashMap<String, VHDLEntity> map;
 
     /**
      * Creates a new library
      */
-    VHDLLibrary() {
+    VHDLLibrary(JarComponentManager jarComponentManager) {
+        if (jarComponentManager != null) {
+            externalJarFiles = jarComponentManager.getJarFiles();
+        } else {
+            externalJarFiles = new ArrayList<>();
+        }
         map = new HashMap<>();
     }
 
@@ -44,7 +53,7 @@ public class VHDLLibrary {
         VHDLEntity e = map.get(elementName);
         if (e == null) {
             try {
-                e = new VHDLTemplate(elementName);
+                e = new VHDLTemplate(elementName, externalJarFiles);
                 map.put(elementName, e);
             } catch (IOException ex) {
                 ex.printStackTrace();

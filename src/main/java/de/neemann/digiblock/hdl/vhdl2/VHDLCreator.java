@@ -7,6 +7,7 @@ package de.neemann.digiblock.hdl.vhdl2;
 
 import de.neemann.digiblock.core.Bits;
 import de.neemann.digiblock.core.wiring.Splitter;
+import de.neemann.digiblock.draw.library.JarComponentManager;
 import de.neemann.digiblock.hdl.hgs.HGSEvalException;
 import de.neemann.digiblock.hdl.model2.*;
 import de.neemann.digiblock.hdl.model2.expression.*;
@@ -35,9 +36,9 @@ public class VHDLCreator {
      *
      * @param out the output stream
      */
-    VHDLCreator(CodePrinter out) {
+    VHDLCreator(CodePrinter out, JarComponentManager jarComponentManager) {
         this.out = out;
-        library = new VHDLLibrary();
+        library = new VHDLLibrary(jarComponentManager);
         customPrinted = new HashSet<>();
     }
 

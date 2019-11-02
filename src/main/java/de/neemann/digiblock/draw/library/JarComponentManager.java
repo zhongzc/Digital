@@ -25,10 +25,12 @@ import java.util.jar.Manifest;
 public class JarComponentManager implements ComponentManager, Iterable<JarComponentManager.AdditionalShape> {
     private ElementLibrary library;
     private ArrayList<AdditionalShape> additionalShapes;
+    private ArrayList<JarFile> jarFiles;
 
     JarComponentManager(ElementLibrary library) {
         this.library = library;
         additionalShapes = new ArrayList<>();
+        jarFiles = new ArrayList<>();
     }
 
     @Override
@@ -47,6 +49,12 @@ public class JarComponentManager implements ComponentManager, Iterable<JarCompon
         return additionalShapes.iterator();
     }
 
+    /**
+     * @return the loaded jar files
+     */
+    public ArrayList<JarFile> getJarFiles() {
+        return jarFiles;
+    }
 
     /**
      * Loads the components from a jar file
@@ -57,9 +65,8 @@ public class JarComponentManager implements ComponentManager, Iterable<JarCompon
      */
     public void loadJar(File file) throws IOException, InvalidNodeException {
         Manifest manifest;
-        try (JarFile jarFile = new JarFile(file)) {
-            manifest = jarFile.getManifest();
-        }
+        JarFile jarFile = new JarFile(file);
+        manifest = jarFile.getManifest();
         if (manifest == null)
             throw new IOException(Lang.get("err_noManifestFound"));
         Attributes attr = manifest.getMainAttributes();
@@ -73,6 +80,7 @@ public class JarComponentManager implements ComponentManager, Iterable<JarCompon
             Class<?> c = cl.loadClass(main);
             ComponentSource cs = (ComponentSource) c.newInstance();
             cs.registerComponents(this);
+            jarFiles.add(jarFile);
         } catch (ClassNotFoundException e) {
             throw new IOException(Lang.get("err_mainClass_N_NotFound", main));
         } catch (IllegalAccessException | InstantiationException e) {

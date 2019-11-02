@@ -6,6 +6,7 @@
 package de.neemann.digiblock.hdl.verilog2;
 
 import de.neemann.digiblock.core.element.ElementTypeDescription;
+import de.neemann.digiblock.draw.library.JarComponentManager;
 import de.neemann.digiblock.hdl.model2.HDLException;
 import de.neemann.digiblock.hdl.model2.HDLNode;
 import de.neemann.digiblock.hdl.verilog2.lib.VerilogElement;
@@ -14,6 +15,8 @@ import de.neemann.digiblock.lang.Lang;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.jar.JarFile;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,12 +29,19 @@ public class VerilogLibrary {
 
     private final HashMap<String, VerilogElement> map;
     private final ArrayList<HDLNode> nodeList = new ArrayList<>();
+    private final ArrayList<JarFile> externalJarFiles;
 
     /**
      * Creates a new instance
      *
+     * @param jarComponentManager jar component manager
      */
-    public VerilogLibrary() {
+    public VerilogLibrary(JarComponentManager jarComponentManager) {
+        if (jarComponentManager != null) {
+            externalJarFiles = jarComponentManager.getJarFiles();
+        } else {
+            externalJarFiles = new ArrayList<>();
+        }
         map = new HashMap<>();
     }
 
@@ -51,7 +61,7 @@ public class VerilogLibrary {
         VerilogElement e = map.get(elementName);
         if (e == null) {
             try {
-                e = new VerilogTemplate(elementName);
+                e = new VerilogTemplate(elementName, externalJarFiles);
                 map.put(elementName, e);
             } catch (IOException ex) {
                 ex.printStackTrace();
