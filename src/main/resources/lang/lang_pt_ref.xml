@@ -1277,6 +1277,11 @@
   <string name="menu_about">About</string>
   <string name="menu_analyse">Analysis</string>
   <string name="menu_analyse_tt">Analyses the actual circuit</string>
+
+  <!-- TODO -->
+  <string name="menu_assembly">Assembly</string>
+  <string name="menu_RARS_tt">RISC-V assembly and run-time simulator</string>
+
   <string name="menu_cut">Cut</string>
   <string name="menu_copy">Copy</string>
   <string name="menu_custom">Custom</string>

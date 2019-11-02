@@ -25,6 +25,7 @@ import de.neemann.digiblock.draw.graphics.*;
 import de.neemann.digiblock.draw.library.ElementLibrary;
 import de.neemann.digiblock.draw.library.ElementNotFoundException;
 import de.neemann.digiblock.draw.library.ElementTypeDescriptionCustom;
+import de.neemann.digiblock.draw.library.JarComponentManager;
 import de.neemann.digiblock.draw.model.AsyncSequentialClock;
 import de.neemann.digiblock.draw.model.ModelCreator;
 import de.neemann.digiblock.draw.model.RealTimeClock;
@@ -75,13 +76,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
+import java.net.URLClassLoader;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.jar.Attributes;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+import java.util.jar.Manifest;
 
 import static de.neemann.digiblock.draw.shapes.GenericShape.SIZE;
 import static de.neemann.gui.ToolTipAction.getCTRLMask;
@@ -233,6 +241,8 @@ public final class Main extends JFrame implements ClosingWindowListener.ConfirmS
         createStartMenu(menuBar, toolBar);
 
         createAnalyseMenu(menuBar);
+
+        createAssembly(menuBar);
 
         toolBar.addSeparator();
 
@@ -1241,6 +1251,30 @@ public final class Main extends JFrame implements ClosingWindowListener.ConfirmS
                 .setToolTip(Lang.get("menu_fsm_tt"))
                 .createJMenuItem());
     }
+
+    /**
+     * Creates the assembly menu
+     *
+     * @param menuBar the menu bar
+     */
+    private void createAssembly(JMenuBar menuBar) {
+        JMenu assembly = new JMenu(Lang.get("menu_assembly"));
+        menuBar.add(assembly);
+        assembly.add(new ToolTipAction("RARS") {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String cmd = "java -jar " + ClassLoader.getSystemResource("rars1_3_1.jar").getFile();
+                try {
+                    Runtime.getRuntime().exec(cmd);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+                .setToolTip(Lang.get("menu_RARS_tt"))
+                .createJMenuItem());
+    }
+
 
     private void orderMeasurements() {
         try {

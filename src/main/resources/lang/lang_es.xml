@@ -1200,6 +1200,11 @@
   <string name="menu_about">Acerca de</string>
   <string name="menu_analyse">Análisis</string>
   <string name="menu_analyse_tt">Analiza el circuito actual</string>
+
+<!-- TODO -->
+  <string name="menu_assembly">Assembly</string>
+  <string name="menu_RARS_tt">RISC-V assembly and run-time simulator</string>
+
   <string name="menu_cut">Cortar</string>
   <string name="menu_copy">Copiar</string>
   <string name="menu_custom">Personalizado</string>
@@ -1383,7 +1388,7 @@
 
         Allí también puedes aportar un &lt;a href="https://github.com/hneemann/[[name]]/issues/new?body=version:%20[[version]]&amp;labels=bug"&gt;problema&lt;/a&gt; o sugerencia
         o &lt;a href="https://github.com/hneemann/[[name]]/issues/new?labels=enhancement"&gt;mejoras&lt;/a&gt;.
-		
+
 		Traducido al castellano por Ángel Millán León</string>
   <string name="msg_N_nodes">{0} nodos</string>
   <string name="msg_analyseErr">Error al analizar el circuito</string>
@@ -1476,7 +1481,7 @@
   <string name="msg_errorStartingATMISP">¡Error al iniciar ATMISP!
         ¿Se ha indicado correctamente la ruta al ejecutable ATMISP.exe en los ajustes?</string>
   <string name="msg_ATMISPIsStillRunning">¡ATMISP todavía ejecutándose!
-        Cuando se cierre este diálogo, ATMISP finalizará 
+        Cuando se cierre este diálogo, ATMISP finalizará
         ¡Asegúrese de qué el proceso se haya completado antes de cerrar este diálogo!</string>
   <string name="menu_runAllTests">Ejecuta todas las pruebas</string>
   <string name="menu_runAllTests_tt">Ejecuta todas las pruebas de esta carpeta</string>
@@ -1737,10 +1742,10 @@ Por tanto, la señal 'D_out' estará también disponible para chequear el valor 
   <string name="stat_addrBits">Bits de dirección</string>
   <string name="tutorial">Tutorial</string>
   <string name="tutorial1">A continuación, podrás diseñar tu primer circuito tras un breve tutorial:
-		
+
 		Primero, pon una entrada en el circuito. Encontrarás las entradas en el menú Componentes▸Entrada-Salida</string>
   <string name="tutorial2">Ahora, añade una segunda entrada al circuito. También puedes hacer clic sobre la entrada que ha aparecido en la barra de herramientas.
-		
+
 		Es mejor colocar la segunda entrada a dos espacios de rejilla debajo de la primera.
 		Puedes mover el circuito presionando el botón derecho del ratón.
 		Haciendo clic sobre las entradas puedes moverlas.</string>
@@ -1750,7 +1755,7 @@ Por tanto, la señal 'D_out' estará también disponible para chequear el valor 
   <string name="tutorial4">El último componente que vamos a insertar es una salida.
 		Colócala a dos espacios de rejilla a la derecha de la puerta "OR Exclusiva".</string>
   <string name="tutorial5">Para completar el circuito hay que dibujar los cables.
-	
+
 		Haz clic en el punto rojo de la primera entrada y conecta el cable que aparece a una entrada de la puerta "OR Exclusiva"
 		haciendo clic en uno de los puntos azules de dicha puerta.
 		¡NO pinches y arrastres con el botón del ratón!</string>
@@ -1762,7 +1767,7 @@ Por tanto, la señal 'D_out' estará también disponible para chequear el valor 
   <string name="tutorial8">La simulación ya está activa. Ahora puedes cambiar los valores de las entradas haciendo clic en ellas.</string>
   <string name="tutorial9">Para terminar la simulación, haz clic en el botón "Stop" de la barra de herramientas.</string>
   <string name="tutorial10">Para que todo quede perfecto, tendrías que poner etiquetas a las entradas y salidas.
-	
+
 		Haz clic con el botón derecho en una entrada para abrir un cuadro de diálogo.
 		En MacOS puedes usar el control-clic.
 		Así podrás nombrar la entrada.</string>

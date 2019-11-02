@@ -1267,6 +1267,11 @@
   <string name="menu_about">Sobre</string>
   <string name="menu_analyse">Análises</string>
   <string name="menu_analyse_tt">Analisar o circuito corrente</string>
+
+<!-- TODO -->
+  <string name="menu_assembly">Assembly</string>
+  <string name="menu_RARS_tt">RISC-V assembly and run-time simulator</string>
+
   <string name="menu_cut">Cortar</string>
   <string name="menu_copy">Copiar</string>
   <string name="menu_custom">Personalizar</string>

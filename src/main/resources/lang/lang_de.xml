@@ -1449,6 +1449,11 @@ Sind evtl. die Namen der Variablen nicht eindeutig?</string>
     <string name="menu_about">Über Digiblock</string>
     <string name="menu_analyse">Analyse</string>
     <string name="menu_analyse_tt">Analyse der aktuellen Schaltung</string>
+
+    <!-- TODO -->
+    <string name="menu_assembly">Assembly</string>
+    <string name="menu_RARS_tt">RISC-V assembly and run-time simulator</string>
+
     <string name="menu_cut">Ausschneiden</string>
     <string name="menu_copy">Kopieren</string>
     <string name="menu_custom">Benutzerdefiniert</string>
