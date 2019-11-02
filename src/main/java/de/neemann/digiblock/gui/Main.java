@@ -60,6 +60,7 @@ import de.neemann.digiblock.toolchain.Configuration;
 import de.neemann.digiblock.undo.ChangedListener;
 import de.neemann.digiblock.undo.Modifications;
 import de.neemann.gui.*;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -70,10 +71,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -143,6 +141,7 @@ public final class Main extends JFrame implements ClosingWindowListener.ConfirmS
 
     private File baseFilename;
     private File filename;
+    private File rarsTempFile;
     private FileHistory fileHistory;
     private boolean modifiedPrefixVisible = false;
 
@@ -184,6 +183,19 @@ public final class Main extends JFrame implements ClosingWindowListener.ConfirmS
         fileHistory = new FileHistory(this);
 
         baseFilename = builder.baseFileName;
+
+        try {
+            rarsTempFile = File.createTempFile("rars", ".jar");
+            rarsTempFile.deleteOnExit();
+            try (FileOutputStream out = new FileOutputStream(rarsTempFile);
+                 InputStream in = ClassLoader.getSystemResourceAsStream("rars1_3_1.jar")) {
+                if (in != null) {
+                    IOUtils.copy(in, out);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         circuitComponent = new CircuitComponent(this, library, shapeFactory);
         circuitComponent.addListener(this);
@@ -1255,8 +1267,8 @@ public final class Main extends JFrame implements ClosingWindowListener.ConfirmS
         assembly.add(new ToolTipAction("RARS") {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String cmd = "java -jar " + ClassLoader.getSystemResource("rars1_3_1.jar").getFile();
                 try {
+                    String cmd = "java -jar " + rarsTempFile.getAbsolutePath();
                     Runtime.getRuntime().exec(cmd);
                 } catch (IOException e) {
                     e.printStackTrace();
