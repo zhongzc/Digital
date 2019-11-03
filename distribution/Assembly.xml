@@ -38,6 +38,13 @@
     </files>
     <fileSets>
         <fileSet>
+            <directory>${basedir}/distribution/jarLib</directory>
+            <outputDirectory>/jarLib/</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+        <fileSet>
             <directory>${basedir}/src/main/dig/combinatorial</directory>
             <outputDirectory>/examples/combinatorial/</outputDirectory>
             <includes>
