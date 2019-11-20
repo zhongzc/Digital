@@ -48,7 +48,7 @@ public final class InsertAction extends ToolTipAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (node.isUnique()) {
-            VisualElement visualElement = node.setWideShapeFlagTo(new VisualElement(node.getName()).setPos(new Vector(10, 10)).setShapeFactory(shapeFactory));
+            VisualElement visualElement = new VisualElement(node.getName()).setPos(new Vector(10, 10)).setShapeFactory(shapeFactory);
             if (getIcon() == null) {
                 try {
                     node.getDescription();

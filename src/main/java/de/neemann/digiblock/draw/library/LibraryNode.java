@@ -11,7 +11,6 @@ import de.neemann.digiblock.core.element.Keys;
 import de.neemann.digiblock.draw.elements.Circuit;
 import de.neemann.digiblock.draw.elements.VisualElement;
 import de.neemann.digiblock.draw.shapes.ShapeFactory;
-import de.neemann.digiblock.gui.Settings;
 import de.neemann.digiblock.lang.Lang;
 import de.neemann.gui.IconCreator;
 import de.neemann.gui.LineBreaker;
@@ -287,31 +286,12 @@ public class LibraryNode implements Iterable<LibraryNode> {
     public Icon getIconOrNull(ShapeFactory shapeFactory) {
         if (unique) {
             if (icon == null && description != null)
-                icon = setWideShapeFlagTo(
-                        new VisualElement(description.getName())
-                                .setShapeFactory(shapeFactory)
-                ).createIcon(75);
+                icon = new VisualElement(description.getName())
+                        .setShapeFactory(shapeFactory)
+                        .createIcon(75);
             return icon;
         } else
             return ICON_NOT_UNIQUE;
-    }
-
-    /**
-     * Sets the wide shape flag to this element if necessary
-     *
-     * @param visualElement the visual element
-     * @return the given visual element
-     */
-    public VisualElement setWideShapeFlagTo(VisualElement visualElement) {
-        // set the wide shape option to the element
-        try {
-            if (Settings.getInstance().get(Keys.SETTINGS_IEEE_SHAPES)
-                    && getDescription().hasAttribute(Keys.WIDE_SHAPE))
-                visualElement.setAttribute(Keys.WIDE_SHAPE, true);
-        } catch (IOException e1) {
-            // do nothing on error
-        }
-        return visualElement;
     }
 
     /**

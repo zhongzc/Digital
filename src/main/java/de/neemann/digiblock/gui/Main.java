@@ -316,6 +316,8 @@ public final class Main extends JFrame implements ClosingWindowListener.ConfirmS
             setLocationRelativeTo(null);
 
         checkIDEIntegration(builder, menuBar);
+
+        System.out.println();
     }
 
     private void checkIDEIntegration(MainBuilder builder, JMenuBar menuBar) {
